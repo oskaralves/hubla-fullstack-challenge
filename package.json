@@ -5,10 +5,13 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "dev:frontend": "turbo dev --filter=hubla-frontend",
+    "dev:backend": "turbo start:dev --filter=hubla-backend",
+    "dev:all": "concurrently \"turbo start:dev --filter=hubla-backend\" \"turbo dev --filter=hubla-frontend\"",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "concurrently": "^9.1.0",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"

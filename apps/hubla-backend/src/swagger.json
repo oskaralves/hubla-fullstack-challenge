@@ -14,6 +14,130 @@
           "App"
         ]
       }
+    },
+    "/transactions": {
+      "post": {
+        "operationId": "TransactionController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransactionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create a new transaction",
+        "tags": [
+          "Transaction"
+        ]
+      },
+      "get": {
+        "operationId": "TransactionController_findAll",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skip",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 0,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "take",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "property1:asc,property2:desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTransactionsResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get paged transactions",
+        "tags": [
+          "Transaction"
+        ]
+      }
+    },
+    "/transactions/{id}": {
+      "get": {
+        "operationId": "TransactionController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transaction not found"
+          }
+        },
+        "summary": "Get transaction by ID",
+        "tags": [
+          "Transaction"
+        ]
+      }
     }
   },
   "info": {
@@ -25,6 +149,171 @@
   "tags": [],
   "servers": [],
   "components": {
-    "schemas": {}
+    "schemas": {
+      "CreateTransactionDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "number",
+            "description": "Tipo da transação (1: Venda produtor, 2: Venda afiliado, etc.)",
+            "example": 1
+          },
+          "date": {
+            "type": "string",
+            "description": "Data da transação (ISO 8601 format)",
+            "example": "2024-12-19T12:34:56Z"
+          },
+          "product": {
+            "type": "string",
+            "description": "Descrição do produto",
+            "example": "Produto Exemplo"
+          },
+          "value": {
+            "type": "number",
+            "description": "Valor da transação em centavos",
+            "example": 1000
+          },
+          "seller": {
+            "type": "string",
+            "description": "Nome do vendedor",
+            "example": "João Silva"
+          }
+        },
+        "required": [
+          "type",
+          "date",
+          "product",
+          "value",
+          "seller"
+        ]
+      },
+      "TransactionDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "number",
+            "description": "Tipo da transação (1: Venda produtor, 2: Venda afiliado, etc.)",
+            "example": 1
+          },
+          "date": {
+            "type": "string",
+            "description": "Data da transação (ISO 8601 format)",
+            "example": "2024-12-19T12:34:56Z"
+          },
+          "product": {
+            "type": "string",
+            "description": "Descrição do produto",
+            "example": "Produto Exemplo"
+          },
+          "value": {
+            "type": "number",
+            "description": "Valor da transação em centavos",
+            "example": 1000
+          },
+          "seller": {
+            "type": "string",
+            "description": "Nome do vendedor",
+            "example": "João Silva"
+          },
+          "id": {
+            "type": "string",
+            "description": "ID único da transação",
+            "example": "1a2b3c4d-5678-90ef-1234-567890abcdef"
+          }
+        },
+        "required": [
+          "type",
+          "date",
+          "product",
+          "value",
+          "seller",
+          "id"
+        ]
+      },
+      "LinkDto": {
+        "type": "object",
+        "properties": {
+          "prev": {
+            "type": "string",
+            "example": "/[router]?skip=0&take=10"
+          },
+          "next": {
+            "type": "string",
+            "example": "/[router]?skip=10&take=10"
+          }
+        },
+        "required": [
+          "prev",
+          "next"
+        ]
+      },
+      "MetaDto": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2023-06-13T05:15:35.461Z"
+          }
+        },
+        "required": [
+          "timestamp"
+        ]
+      },
+      "PagedTransactionsResponseDto": {
+        "type": "object",
+        "properties": {
+          "countRows": {
+            "type": "number",
+            "description": "Quantidades de registros retornados"
+          },
+          "totalRows": {
+            "type": "number",
+            "description": "Quantidades de registros existentes na base de dados"
+          },
+          "currentPage": {
+            "type": "number",
+            "description": "Informa qual a página atual"
+          },
+          "totalPages": {
+            "type": "number",
+            "description": "Informa a quantidade de páginas existentes"
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Informa true se há registros na próxima pagina",
+            "default": false
+          },
+          "links": {
+            "description": "Informa rotas da próxima página e a anterior",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LinkDto"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaDto"
+          },
+          "rows": {
+            "description": "Lista de transações",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "countRows",
+          "totalRows",
+          "currentPage",
+          "totalPages",
+          "hasMore",
+          "links",
+          "meta",
+          "rows"
+        ]
+      }
+    }
   }
 }

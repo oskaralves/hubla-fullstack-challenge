@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { TransactionService } from './transaction.service';
+import { TransactionValidationHelper } from './helpers/transaction-validation.helper';
 import { TransactionController } from './transaction.controller';
+import { TransactionService } from './transaction.service';
 
 @Module({
   controllers: [TransactionController],
-  providers: [TransactionService],
+  providers: [TransactionService, TransactionValidationHelper],
 })
 export class TransactionModule {}

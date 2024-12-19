@@ -1,0 +1,11 @@
+model Transaction {
+    id      String   @id @default(uuid())
+    type    Int
+    date    DateTime
+    product String
+    value   Int
+    seller  String
+
+    @@map("transaction")
+    @@schema("public")
+}

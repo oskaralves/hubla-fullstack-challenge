@@ -16,7 +16,7 @@ export class QueryParamsDto {
 
   @ApiPropertyOptional({
     required: false,
-    example: 10,
+    example: 0,
     default: 0,
   })
   @IsOptional()

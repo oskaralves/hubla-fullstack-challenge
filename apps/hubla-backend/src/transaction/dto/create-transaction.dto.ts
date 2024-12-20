@@ -4,7 +4,7 @@ import { IsInt, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 export class CreateTransactionDto {
   @ApiProperty({
     description:
-      'Tipo da transação (1: Venda produtor, 2: Venda afiliado, etc.)',
+      'Type of Transaction (1: Venda produtor, 2: Venda afiliado, etc.)',
     example: 1,
   })
   @IsInt()
@@ -12,7 +12,7 @@ export class CreateTransactionDto {
   type: number;
 
   @ApiProperty({
-    description: 'Data da transação (ISO 8601 format)',
+    description: 'Transaction Date (ISO 8601 format)',
     example: '2024-12-19T12:34:56Z',
   })
   @IsString()
@@ -20,8 +20,7 @@ export class CreateTransactionDto {
   date: string;
 
   @ApiProperty({
-    description: 'Descrição do produto',
-    example: 'Produto Exemplo',
+    description: 'Description of product',
   })
   @IsString()
   @MaxLength(30)
@@ -29,7 +28,7 @@ export class CreateTransactionDto {
   product: string;
 
   @ApiProperty({
-    description: 'Valor da transação em centavos',
+    description: 'Transaction value in cents',
     example: 1000,
   })
   @IsInt()
@@ -37,8 +36,7 @@ export class CreateTransactionDto {
   value: number;
 
   @ApiProperty({
-    description: 'Nome do vendedor',
-    example: 'João Silva',
+    description: 'Seller name',
   })
   @IsString()
   @MaxLength(20)

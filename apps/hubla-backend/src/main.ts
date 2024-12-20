@@ -30,8 +30,8 @@ async function bootstrap() {
   });
 
   // For Upload
-  app.use(bodyParser.json({ limit: '50mb' }));
-  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+  app.use(bodyParser.json({ limit: '10mb' }));
+  app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
   // For handle lifecycle events
   app.enableShutdownHooks();
@@ -41,8 +41,8 @@ async function bootstrap() {
     .setTitle('Hubla - Full Stack Challenge - API Documentation')
     .setDescription(
       `This documentation details the API endpoints for the Hubla Full Stack Challenge.
-      The API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.
-      Use this documentation as a reference for integration and correct use of the resources provided by the API.`,
+      \nThe API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.
+      \nUse this documentation as a reference for integration and correct use of the resources provided by the API.`,
     )
     .setVersion('1.2.0')
     .build();

@@ -17,6 +17,7 @@ export class TransactionService {
   private readonly fieldsToSearch: Prisma.TransactionScalarFieldEnum[] = [
     'seller',
     'product',
+    'value',
   ];
 
   constructor(
@@ -87,11 +88,19 @@ export class TransactionService {
     take = 10,
     sort = 'date:desc',
     path = '/transactions',
+    transactionTypes = [],
   }: PagedTransactionsQueryParamsDto): Promise<PagedTransactionsResponseDto> {
-    const where = SearchHelper.searchBuilder({
-      search,
-      fields: this.fieldsToSearch,
-    });
+    const where = {
+      ...SearchHelper.searchBuilder({
+        search,
+        fields: this.fieldsToSearch,
+      }),
+      ...(transactionTypes.length > 0 && {
+        type: {
+          in: transactionTypes.map((type) => Number(type)),
+        },
+      }),
+    };
 
     const orderBy =
       SortHelper.parseSortParam<Prisma.TransactionOrderByWithAggregationInput>(

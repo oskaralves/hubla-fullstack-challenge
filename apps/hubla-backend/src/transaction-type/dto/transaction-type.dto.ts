@@ -1,10 +1,10 @@
-import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { TransactionNatureEnum } from '@prisma/client';
-import { Exclude } from 'class-transformer';
 
 export class TransactionTypeDto {
-  @Exclude()
-  @ApiHideProperty()
+  @ApiProperty({
+    description: 'Transaction type Id',
+  })
   id: string;
 
   @ApiProperty({
@@ -13,8 +13,9 @@ export class TransactionTypeDto {
   description: string;
 
   @ApiProperty({
-    description: 'Tipo do endereço',
-    example: 'HOME',
+    description: 'INCOME or EXPENSE',
+    example: 'INCOME',
+    enum: TransactionNatureEnum
   })
   nature: TransactionNatureEnum;
 }

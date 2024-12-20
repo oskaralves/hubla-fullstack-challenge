@@ -163,11 +163,71 @@
           "Transactions"
         ]
       }
+    },
+    "/transaction-types": {
+      "get": {
+        "operationId": "TransactionTypeController_findAll",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skip",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 0,
+              "example": 0,
+              "type": "number"
+            }
+          },
+          {
+            "name": "take",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "property1:asc,property2:desc",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paged transaction types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTransactionTypesResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get paged transaction types",
+        "tags": [
+          "TransactionTypes"
+        ]
+      }
     }
   },
   "info": {
     "title": "Hubla - Full Stack Challenge - API Documentation",
-    "description": "This documentation details the API endpoints for the Hubla Full Stack Challenge.\n      The API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.\n      Use this documentation as a reference for integration and correct use of the resources provided by the API.",
+    "description": "This documentation details the API endpoints for the Hubla Full Stack Challenge.\n      \nThe API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.\n      \nUse this documentation as a reference for integration and correct use of the resources provided by the API.",
     "version": "1.2.0",
     "contact": {}
   },
@@ -239,17 +299,26 @@
       "TransactionTypeDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Transaction type Id"
+          },
           "description": {
             "type": "string",
             "description": "Transaction type description"
           },
           "nature": {
             "type": "string",
-            "description": "Tipo do endereço",
-            "example": "HOME"
+            "description": "INCOME or EXPENSE",
+            "example": "INCOME",
+            "enum": [
+              "INCOME",
+              "EXPENSE"
+            ]
           }
         },
         "required": [
+          "id",
           "description",
           "nature"
         ]
@@ -374,6 +443,60 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/TransactionDto"
+            }
+          }
+        },
+        "required": [
+          "countRows",
+          "totalRows",
+          "currentPage",
+          "totalPages",
+          "hasMore",
+          "links",
+          "meta",
+          "rows"
+        ]
+      },
+      "PagedTransactionTypesResponseDto": {
+        "type": "object",
+        "properties": {
+          "countRows": {
+            "type": "number",
+            "description": "Quantidades de registros retornados"
+          },
+          "totalRows": {
+            "type": "number",
+            "description": "Quantidades de registros existentes na base de dados"
+          },
+          "currentPage": {
+            "type": "number",
+            "description": "Informa qual a página atual"
+          },
+          "totalPages": {
+            "type": "number",
+            "description": "Informa a quantidade de páginas existentes"
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Informa true se há registros na próxima pagina",
+            "default": false
+          },
+          "links": {
+            "description": "Informa rotas da próxima página e a anterior",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LinkDto"
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaDto"
+          },
+          "rows": {
+            "description": "Transaction types list",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionTypeDto"
             }
           }
         },

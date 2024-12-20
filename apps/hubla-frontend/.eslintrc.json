@@ -1,0 +1,27 @@
+{
+  "env": {
+    "commonjs": false,
+    "es6": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "object-shorthand": ["error", "always"],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none",
+        "caughtErrors": "all",
+        "ignoreRestSiblings": false
+      }
+    ]
+  }
+}

@@ -1,11 +1,12 @@
 model Transaction {
-    id      String   @id @default(uuid())
-    type    Int
-    date    DateTime
-    product String
-    value   Int
-    seller  String
+    id              String          @id @default(uuid())
+    type            Int
+    date            DateTime
+    product         String
+    value           Int
+    seller          String
+    transactionType TransactionType @relation(fields: [type], references: [id])
 
-    @@map("transaction")
+    @@map("transactions")
     @@schema("public")
 }

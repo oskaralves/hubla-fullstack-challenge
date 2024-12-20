@@ -1,0 +1,16 @@
+model TransactionType {
+    id           Int                   @id @default(autoincrement())
+    description  String                @unique
+    nature       TransactionNatureEnum
+    transactions Transaction[]
+
+    @@map("transaction_types")
+    @@schema("public")
+}
+
+enum TransactionNatureEnum {
+    INCOME // Entrada
+    EXPENSE // Saída
+
+    @@schema("public")
+}

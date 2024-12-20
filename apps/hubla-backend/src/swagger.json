@@ -1,17 +1,42 @@
 {
   "openapi": "3.0.0",
   "paths": {
-    "/": {
-      "get": {
-        "operationId": "AppController_getHello",
+    "/transactions/bulk": {
+      "post": {
+        "operationId": "TransactionController_uploadTransactions",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
+        "requestBody": {
+          "required": true,
+          "description": "File to upload",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
           }
         },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkTransactionsResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Upload and process bulk transactions",
         "tags": [
-          "App"
+          "Transactions"
         ]
       }
     },
@@ -43,7 +68,7 @@
         },
         "summary": "Create a new transaction",
         "tags": [
-          "Transaction"
+          "Transactions"
         ]
       },
       "get": {
@@ -63,7 +88,7 @@
             "in": "query",
             "schema": {
               "default": 0,
-              "example": 10,
+              "example": 0,
               "type": "number"
             }
           },
@@ -89,7 +114,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Paginated transactions",
+            "description": "Paged transactions",
             "content": {
               "application/json": {
                 "schema": {
@@ -101,7 +126,7 @@
         },
         "summary": "Get paged transactions",
         "tags": [
-          "Transaction"
+          "Transactions"
         ]
       }
     },
@@ -135,14 +160,14 @@
         },
         "summary": "Get transaction by ID",
         "tags": [
-          "Transaction"
+          "Transactions"
         ]
       }
     }
   },
   "info": {
-    "title": "Hubla - Desafio Programação Full Stack - API Documentation",
-    "description": "API description",
+    "title": "Hubla - Full Stack Challenge - API Documentation",
+    "description": "This documentation details the API endpoints for the Hubla Full Stack Challenge.\n      The API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.\n      Use this documentation as a reference for integration and correct use of the resources provided by the API.",
     "version": "1.2.0",
     "contact": {}
   },
@@ -150,33 +175,57 @@
   "servers": [],
   "components": {
     "schemas": {
+      "BulkTransactionsResponseDto": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "description": "Indicates whether there was an error in processing",
+            "example": true
+          },
+          "messages": {
+            "description": "List of error messages associated with processed transactions",
+            "example": [
+              "Line 18: Transaction already registered in the database.",
+              "Line 21: Transaction already registered in the database.",
+              "Line 27: Transaction already registered in the database."
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "error",
+          "messages"
+        ]
+      },
       "CreateTransactionDto": {
         "type": "object",
         "properties": {
           "type": {
             "type": "number",
-            "description": "Tipo da transação (1: Venda produtor, 2: Venda afiliado, etc.)",
+            "description": "Type of Transaction (1: Venda produtor, 2: Venda afiliado, etc.)",
             "example": 1
           },
           "date": {
             "type": "string",
-            "description": "Data da transação (ISO 8601 format)",
+            "description": "Transaction Date (ISO 8601 format)",
             "example": "2024-12-19T12:34:56Z"
           },
           "product": {
             "type": "string",
-            "description": "Descrição do produto",
-            "example": "Produto Exemplo"
+            "description": "Description of product"
           },
           "value": {
             "type": "number",
-            "description": "Valor da transação em centavos",
+            "description": "Transaction value in cents",
             "example": 1000
           },
           "seller": {
             "type": "string",
-            "description": "Nome do vendedor",
-            "example": "João Silva"
+            "description": "Seller name"
           }
         },
         "required": [
@@ -187,47 +236,72 @@
           "seller"
         ]
       },
+      "TransactionTypeDto": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Transaction type description"
+          },
+          "nature": {
+            "type": "string",
+            "description": "Tipo do endereço",
+            "example": "HOME"
+          }
+        },
+        "required": [
+          "description",
+          "nature"
+        ]
+      },
       "TransactionDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique transaction ID",
+            "example": "1a2b3c4d-5678-90ef-1234-567890abcdef"
+          },
           "type": {
             "type": "number",
-            "description": "Tipo da transação (1: Venda produtor, 2: Venda afiliado, etc.)",
+            "description": "Type of Transaction (1: Venda produtor, 2: Venda afiliado, etc.)",
             "example": 1
           },
           "date": {
             "type": "string",
-            "description": "Data da transação (ISO 8601 format)",
+            "description": "Transaction Date (ISO 8601 format)",
             "example": "2024-12-19T12:34:56Z"
           },
           "product": {
             "type": "string",
-            "description": "Descrição do produto",
-            "example": "Produto Exemplo"
+            "description": "Description of product"
           },
           "value": {
             "type": "number",
-            "description": "Valor da transação em centavos",
+            "description": "Transaction value in cents",
             "example": 1000
           },
           "seller": {
             "type": "string",
-            "description": "Nome do vendedor",
-            "example": "João Silva"
+            "description": "Seller name"
           },
-          "id": {
-            "type": "string",
-            "description": "ID único da transação",
-            "example": "1a2b3c4d-5678-90ef-1234-567890abcdef"
+          "transactionType": {
+            "description": "Transaction type list",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TransactionTypeDto"
+              }
+            ]
           }
         },
         "required": [
+          "id",
           "type",
           "date",
           "product",
           "value",
           "seller",
-          "id"
+          "transactionType"
         ]
       },
       "LinkDto": {
@@ -296,10 +370,10 @@
             "$ref": "#/components/schemas/MetaDto"
           },
           "rows": {
-            "description": "Lista de transações",
+            "description": "Transactions list",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/TransactionDto"
             }
           }
         },

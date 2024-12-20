@@ -38,8 +38,12 @@ async function bootstrap() {
 
   // For documentation
   const options = new DocumentBuilder()
-    .setTitle('Hubla - Desafio Programação Full Stack - API Documentation')
-    .setDescription('API description')
+    .setTitle('Hubla - Full Stack Challenge - API Documentation')
+    .setDescription(
+      `This documentation details the API endpoints for the Hubla Full Stack Challenge.
+      The API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.
+      Use this documentation as a reference for integration and correct use of the resources provided by the API.`,
+    )
     .setVersion('1.2.0')
     .build();
 

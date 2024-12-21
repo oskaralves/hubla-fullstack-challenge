@@ -16,5 +16,16 @@ export class BulkTransactionsResponseDto {
       'Line 27: Transaction already registered in the database.',
     ],
   })
-  messages: string[];
+  errorMessages: string[];
+
+  @ApiProperty({
+    description:
+      'List of success messages for transactions that were processed successfully.',
+    example: [
+      'Line 1: Transaction with ID "67890" processed successfully.',
+      'Line 5: Transaction with ID "11223" added to the database.',
+      'Line 10: Transaction with ID "44556" processed and validated successfully.',
+    ],
+  })
+  successMessages: string[];
 }

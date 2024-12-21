@@ -28,28 +28,31 @@ export class TransactionService {
   async processBulkTransactions(
     file: Express.Multer.File,
   ): Promise<BulkTransactionsResponseDto> {
-    const lines = file.buffer.toString('utf-8').split('\n');
+    const lines = file.buffer
+      .toString('utf-8')
+      .split('\n')
+      .map((line) => line.trim());
     const errorMessages: string[] = [];
+    const successMessages: string[] = [];
     const validTransactions: CreateTransactionDto[] = [];
 
-    for (let i = 0; i < lines.length; i++) {
-      const lineNumber = i + 1;
-      const line = lines[i].trim();
+    for (const [index, line] of lines.entries()) {
+      const lineNumber = index + 1;
 
-      if (!line) continue;
+      if (!line) continue; // Ignora linhas vazias
 
-      const transaction = this.parseTransactionLine(line);
-
-      const errorMessage =
+      try {
+        const transaction = this.parseTransactionLine(line);
         await this.transactionValidationHelper.validateTransaction(
           transaction,
           lineNumber,
         );
-
-      if (errorMessage) {
-        errorMessages.push(errorMessage);
-      } else {
         validTransactions.push(transaction);
+        successMessages.push(
+          `Linha ${lineNumber}: Transação de "${transaction.seller}" importada com sucesso!`,
+        );
+      } catch (error) {
+        errorMessages.push(error.message);
       }
     }
 
@@ -62,7 +65,8 @@ export class TransactionService {
 
     return {
       error: errorMessages.length > 0,
-      messages: errorMessages,
+      errorMessages,
+      successMessages,
     };
   }
 

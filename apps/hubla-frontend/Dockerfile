@@ -8,7 +8,6 @@ COPY ./package.json ./yarn.lock ./
 
 # Copiar apenas os arquivos do frontend
 
-COPY ./packages/shared ./packages/shared
 COPY ./apps/hubla-frontend/package*.json ./apps/hubla-frontend/
 COPY ./apps/hubla-frontend/public ./apps/hubla-frontend/public
 COPY ./apps/hubla-frontend/tsconfig*.json ./apps/hubla-frontend/

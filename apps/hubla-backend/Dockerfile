@@ -8,7 +8,6 @@ COPY ./package.json ./yarn.lock ./
 
 # Copiar apenas os arquivos do backend
 
-COPY ./packages/shared ./packages/shared
 COPY ./apps/hubla-backend/package*.json ./apps/hubla-backend/
 COPY ./apps/hubla-backend/prisma ./apps/hubla-backend/prisma
 COPY ./apps/hubla-backend/tsconfig*.json ./apps/hubla-backend/

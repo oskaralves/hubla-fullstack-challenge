@@ -1,0 +1,7 @@
+{
+  "TRANSACTIONS": {
+    "EDIT_TRANSACTION": "Edit transaction",
+    "NEW_TRANSACTION": "New transaction",
+    "IMPORT_TRANSACTIONS": "Import Transactions"
+  }
+}

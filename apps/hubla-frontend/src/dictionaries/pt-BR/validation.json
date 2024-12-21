@@ -1,0 +1,9 @@
+{
+  "REQUIRED_FIELD": "O :field é obrigatório",
+  "MIN_LENGTH": "O :field deve conter pelo menos :min caracteres",
+  "MAX_LENGTH": "O :field deve conter no máximo :max caracteres",
+  "INVALID_FIELD": "O campo :field é inválido.",
+  "POSITIVE_VALUE_REQUIRED": "O valor deve ser positivo. [valor] > 0",
+  "FILE_REQUIRED": "O arquivo precisa ser um objeto válido do tipo File.",
+  "ONLY_TXT_ALLOWED": "Apenas arquivos com extensão .txt são permitidos."
+}

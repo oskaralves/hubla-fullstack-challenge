@@ -1,0 +1,31 @@
+{
+  "SUCCESS": {
+    "CREATE": {
+      "MALE": ":entity has been successfully registered!",
+      "FEMALE": ":entity has been successfully registered!"
+    },
+    "UPDATE": {
+      "MALE": ":entity has been successfully updated!",
+      "FEMALE": ":entity has been successfully updated!"
+    },
+    "DELETE": {
+      "MALE": ":entity has been successfully deleted!",
+      "FEMALE": ":entity has been successfully deleted!"
+    }
+  },
+  "ERROR": {
+    "CREATE": {
+      "MALE": "Failed to register the :entity.",
+      "FEMALE": "Failed to register the :entity."
+    },
+    "UPDATE": {
+      "MALE": "Failed to update the :entity.",
+      "FEMALE": "Failed to update the :entity."
+    },
+    "DELETE": {
+      "MALE": "Failed to delete the :entity.",
+      "FEMALE": "Failed to delete the :entity."
+    },
+    "INTERNAL_SERVER_ERROR": "No server response"
+  }
+}

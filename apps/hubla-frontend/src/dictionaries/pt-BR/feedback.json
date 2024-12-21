@@ -1,0 +1,31 @@
+{
+  "SUCCESS": {
+    "CREATE": {
+      "MALE": "O :entity foi cadastrado com sucesso!",
+      "FEMALE": "A :entity foi cadastrada com sucesso!"
+    },
+    "UPDATE": {
+      "MALE": "O :entity foi atualizado com sucesso!",
+      "FEMALE": "A :entity foi atualizada com sucesso!"
+    },
+    "DELETE": {
+      "MALE": "O :entity foi removido com sucesso!",
+      "FEMALE": "A :entity foi removida com sucesso!"
+    }
+  },
+  "ERROR": {
+    "CREATE": {
+      "MALE": "Falha ao cadastrar o :entity.",
+      "FEMALE": "Falha ao cadastrar a :entity."
+    },
+    "UPDATE": {
+      "MALE": "Falha ao atualizar o :entity.",
+      "FEMALE": "Falha ao atualizar a :entity."
+    },
+    "DELETE": {
+      "MALE": "Falha ao remover o :entity.",
+      "FEMALE": "Falha ao remover a :entity."
+    },
+    "INTERNAL_SERVER_ERROR": "Sem resposta do servidor"
+  }
+}

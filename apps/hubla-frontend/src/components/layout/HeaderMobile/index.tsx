@@ -1,36 +1,35 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/language-context';
-import { cn } from '@/lib/utils';
-import { getNavigation } from '@/navigation';
-import { SessionUser } from '@/types/auth';
-import { motion, useCycle } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import { MenuItem } from '../Sidebar/MenuItem';
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/language-context";
+import { cn } from "@/lib/utils";
+import { getNavigation } from "@/navigation";
+import { motion, useCycle } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { MenuItem } from "../Sidebar/MenuItem";
 
 const sidebar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 100% 0)`,
     transition: {
-      type: 'spring',
+      type: "spring",
       stiffness: 20,
       restDelta: 2,
     },
   }),
   closed: {
-    clipPath: 'circle(0px at 100% 0)',
+    clipPath: "circle(0px at 100% 0)",
     transition: {
-      type: 'spring',
+      type: "spring",
       stiffness: 400,
       damping: 40,
     },
   },
 };
 
-export const SidebarMobile = ({ user }: { user: SessionUser }) => {
+export const SidebarMobile = () => {
   const containerRef = useRef(null);
   const pathname = usePathname();
   const { locale } = useLanguage();
@@ -48,10 +47,10 @@ export const SidebarMobile = ({ user }: { user: SessionUser }) => {
     <div className="relative h-10 w-10 md:hidden">
       <motion.nav
         initial={false}
-        animate={isOpen ? 'open' : 'closed'}
+        animate={isOpen ? "open" : "closed"}
         custom={height}
         className={`fixed inset-0 right-0 z-50 w-full ${
-          isOpen ? '' : 'pointer-events-none'
+          isOpen ? "" : "pointer-events-none"
         }`}
         ref={containerRef}
       >
@@ -62,8 +61,8 @@ export const SidebarMobile = ({ user }: { user: SessionUser }) => {
         <motion.ul
           variants={variants}
           className={cn(
-            'relative flex h-full w-full flex-col gap-3 px-10 py-16',
-            isOpen ? 'overflow-y-auto' : 'overflow-hidden'
+            "relative flex h-full w-full flex-col gap-3 px-10 py-16",
+            isOpen ? "overflow-y-auto" : "overflow-hidden"
           )}
         >
           {navigation.items.map((item, idx) => {
@@ -107,8 +106,8 @@ const MenuToggle = ({ toggleOpen }: { toggleOpen: () => void }) => (
     >
       <Path
         variants={{
-          closed: { d: 'M 2 2.5 L 20 2.5' },
-          open: { d: 'M 3 16.5 L 17 2.5' },
+          closed: { d: "M 2 2.5 L 20 2.5" },
+          open: { d: "M 3 16.5 L 17 2.5" },
         }}
       />
       <Path
@@ -118,8 +117,8 @@ const MenuToggle = ({ toggleOpen }: { toggleOpen: () => void }) => (
       />
       <Path
         variants={{
-          closed: { d: 'M 2 16.346 L 20 16.346' },
-          open: { d: 'M 3 2.5 L 17 16.346' },
+          closed: { d: "M 2 16.346 L 20 16.346" },
+          open: { d: "M 3 2.5 L 17 16.346" },
         }}
       />
     </svg>

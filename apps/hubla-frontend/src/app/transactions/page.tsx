@@ -8,7 +8,7 @@ import { DocumentAttachmentIcon, TransactionIcon } from "hugeicons-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import { TransactionTableSkeleton } from "./skeleton";
-import { TransactionList } from "./user-list";
+import { TransactionList } from "./transaction-list";
 
 type TransactionsPageProps = {
   searchParams?: SearchParams;

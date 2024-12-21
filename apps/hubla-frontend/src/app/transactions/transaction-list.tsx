@@ -6,7 +6,7 @@ import { DEFAULT_ITEMS_PER_PAGE } from "@/constants";
 import { SearchParams } from "@/types/common";
 import { Transaction } from "@/types/transaction";
 import { TransactionType } from "@/types/transaction-type";
-import { TransactionsTable } from "./user-table";
+import { TransactionsTable } from "./transactions-table";
 
 type TransactionListProps = {
   searchParams?: SearchParams;

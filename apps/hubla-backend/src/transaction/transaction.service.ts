@@ -17,7 +17,6 @@ export class TransactionService {
   private readonly fieldsToSearch: Prisma.TransactionScalarFieldEnum[] = [
     'seller',
     'product',
-    'value',
   ];
 
   constructor(

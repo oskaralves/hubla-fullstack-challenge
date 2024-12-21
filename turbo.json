@@ -10,6 +10,9 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "prettier": {
+      "outputs": []
+    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },

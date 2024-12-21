@@ -7,7 +7,8 @@
     "dev:frontend": "turbo dev --filter=hubla-frontend",
     "dev:backend": "turbo start:dev --filter=hubla-backend",
     "dev:all": "concurrently \"turbo start:dev --filter=hubla-backend\" \"turbo dev --filter=hubla-frontend\"",
-    "lint": "turbo lint",
+    "lint": "turbo run lint",
+    "prettier": "turbo run prettier",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
     "docker:prod": "docker-compose up --build",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
+    "eslint": "^8.x",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"

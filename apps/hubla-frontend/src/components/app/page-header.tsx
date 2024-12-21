@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Skeleton } from '@/components/ui/skeleton';
-import { ArrowLeftIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { ReactNode } from 'react';
-import { Button } from '../ui/button';
+import { Skeleton } from "@/components/ui/skeleton";
+import { ArrowLeftIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
+import { Button } from "../ui/button";
 
 type PageHeaderProps = {
   icon?: ReactNode | ReactNode[];
@@ -44,7 +44,7 @@ const PageHeader = ({
       <div className="flex flex-1 flex-col">
         {isPending ? (
           <Skeleton className="mb-1 h-5 w-56 rounded" />
-        ) : title && typeof title === 'string' ? (
+        ) : title && typeof title === "string" ? (
           <h1 className="text-lg font-medium leading-tight">{title}</h1>
         ) : (
           title
@@ -52,7 +52,7 @@ const PageHeader = ({
 
         {isPending ? (
           <Skeleton className="h-4 w-32 rounded" />
-        ) : subtitle && typeof subtitle === 'string' ? (
+        ) : subtitle && typeof subtitle === "string" ? (
           <p className="text-sm leading-none text-foreground/50">{subtitle}</p>
         ) : (
           subtitle

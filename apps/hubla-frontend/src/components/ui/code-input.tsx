@@ -1,14 +1,14 @@
-import { Input, InputProps } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
+import { Input, InputProps } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import React, {
   ChangeEvent,
   ClipboardEvent,
   KeyboardEvent,
   useEffect,
   useRef,
-} from 'react';
+} from "react";
 
-interface InputCodeProps extends Omit<InputProps, 'onChange'> {
+interface InputCodeProps extends Omit<InputProps, "onChange"> {
   digits: number;
   value?: string;
   onChange?: (code: string) => void;
@@ -16,7 +16,7 @@ interface InputCodeProps extends Omit<InputProps, 'onChange'> {
 
 const CodeInput: React.FC<InputCodeProps> = ({
   digits,
-  value = '',
+  value = "",
   onChange,
   className,
   ...props
@@ -27,7 +27,7 @@ const CodeInput: React.FC<InputCodeProps> = ({
     e: ChangeEvent<HTMLInputElement>,
     index: number
   ) => {
-    const val = e.target.value.replace(/\s/g, '');
+    const val = e.target.value.replace(/\s/g, "");
     if (val.length === 1 && index < digits - 1) {
       inputRefs.current[index + 1]?.select();
     }
@@ -35,23 +35,23 @@ const CodeInput: React.FC<InputCodeProps> = ({
     e.target.value = val;
 
     const currentValues = inputRefs.current
-      .map((input) => input?.value || '')
-      .join('');
-    if (currentValues.length === digits && !currentValues.includes('')) {
+      .map((input) => input?.value || "")
+      .join("");
+    if (currentValues.length === digits && !currentValues.includes("")) {
       onChange?.(currentValues);
     }
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
-    if (e.key === 'Backspace' && !e.currentTarget.value && index > 0) {
+    if (e.key === "Backspace" && !e.currentTarget.value && index > 0) {
       inputRefs.current[index - 1]?.select();
     }
   };
 
   const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
-    const pasteData = e.clipboardData.getData('text').replace(/\s/g, '');
+    const pasteData = e.clipboardData.getData("text").replace(/\s/g, "");
     if (pasteData.length === digits) {
-      pasteData.split('').forEach((char, index) => {
+      pasteData.split("").forEach((char, index) => {
         if (inputRefs.current[index]) {
           inputRefs.current[index]!.value = char;
         }
@@ -64,7 +64,7 @@ const CodeInput: React.FC<InputCodeProps> = ({
 
   useEffect(() => {
     const limitedValue = value.slice(0, digits); // Ensure the value is limited to the number of digits
-    limitedValue.split('').forEach((char, index) => {
+    limitedValue.split("").forEach((char, index) => {
       if (inputRefs.current[index]) {
         inputRefs.current[index]!.value = char;
       }
@@ -73,15 +73,15 @@ const CodeInput: React.FC<InputCodeProps> = ({
 
   useEffect(() => {
     const currentValues = inputRefs.current
-      .map((input) => input?.value || '')
-      .join('');
-    if (currentValues.length === digits && !currentValues.includes('')) {
+      .map((input) => input?.value || "")
+      .join("");
+    if (currentValues.length === digits && !currentValues.includes("")) {
       onChange?.(currentValues);
     }
   }, [digits, onChange]);
 
   return (
-    <div style={{ display: 'flex', gap: '8px' }}>
+    <div style={{ display: "flex", gap: "8px" }}>
       {[...Array(digits)].map((_, index) => (
         <Input
           key={index}
@@ -95,7 +95,7 @@ const CodeInput: React.FC<InputCodeProps> = ({
           onPaste={index === 0 ? handlePaste : undefined}
           {...props}
           className={cn(
-            'h-10 w-10 p-0 text-center text-xl font-semibold',
+            "h-10 w-10 p-0 text-center text-xl font-semibold",
             className
           )}
         />
@@ -104,5 +104,5 @@ const CodeInput: React.FC<InputCodeProps> = ({
   );
 };
 
-CodeInput.displayName = 'CodeInput';
+CodeInput.displayName = "CodeInput";
 export { CodeInput };

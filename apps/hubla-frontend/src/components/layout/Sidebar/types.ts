@@ -1,4 +1,4 @@
-import { IMenuItem } from '@/navigation/types';
+import { IMenuItem } from "@/navigation/types";
 
 export type MenuItemProps = {
   item: IMenuItem;

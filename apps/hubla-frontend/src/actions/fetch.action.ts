@@ -1,8 +1,8 @@
-'use server';
+"use server";
 
-import { api } from '@/lib/api';
-import { ResponseException } from '@/types/exception';
-import { revalidatePath } from 'next/cache';
+import { api } from "@/lib/api";
+import { ResponseException } from "@/types/exception";
+import { revalidatePath } from "next/cache";
 
 type FetchActionProps = {
   endpoint: string;

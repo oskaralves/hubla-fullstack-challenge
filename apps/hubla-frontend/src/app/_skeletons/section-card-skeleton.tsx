@@ -1,6 +1,6 @@
-import { Skeleton } from '@/components/ui/skeleton';
-import { ReactNode } from 'react';
-import { SectionCard } from '../_components/section-card';
+import { Skeleton } from "@/components/ui/skeleton";
+import { ReactNode } from "react";
+import { SectionCard } from "../_components/section-card";
 
 export type SectionCardSkeletonProps = {
   children: ReactNode;

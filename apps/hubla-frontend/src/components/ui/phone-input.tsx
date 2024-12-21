@@ -1,12 +1,12 @@
-import { CheckIcon } from 'lucide-react';
+import { CheckIcon } from "lucide-react";
 
-import * as React from 'react';
+import * as React from "react";
 
-import * as RPNInput from 'react-phone-number-input';
+import * as RPNInput from "react-phone-number-input";
 
-import flags from 'react-phone-number-input/flags';
+import flags from "react-phone-number-input/flags";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -14,21 +14,21 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import { Input, InputProps } from '@/components/ui/input';
+} from "@/components/ui/command";
+import { Input, InputProps } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 
-import { cn } from '@/lib/utils';
-import { ArrowDown01Icon } from 'hugeicons-react';
-import { ScrollArea } from './scroll-area';
+import { cn } from "@/lib/utils";
+import { ArrowDown01Icon } from "hugeicons-react";
+import { ScrollArea } from "./scroll-area";
 
-type PhoneInputProps = Omit<InputProps, 'onChange' | 'value'> &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> &
-  Omit<RPNInput.Props<typeof RPNInput.default>, 'onChange'> & {
+type PhoneInputProps = Omit<InputProps, "onChange" | "value"> &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value"> &
+  Omit<RPNInput.Props<typeof RPNInput.default>, "onChange"> & {
     onChange?: (value: RPNInput.Value) => void;
   } & {
     searchCountryPlaceholder?: string;
@@ -50,7 +50,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
       return (
         <RPNInput.default
           ref={ref}
-          className={cn('flex', className)}
+          className={cn("flex", className)}
           flagComponent={FlagComponent}
           countrySelectComponent={(props) => (
             <CountrySelect
@@ -60,25 +60,25 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
             />
           )}
           inputComponent={InputComponent}
-          numberInputProps={{ className: 'w-full' }}
-          onChange={(value) => onChange?.((value as any) || '')}
+          numberInputProps={{ className: "w-full" }}
+          onChange={(value) => onChange?.((value as any) || "")}
           {...props}
         />
       );
     }
   );
-PhoneInput.displayName = 'PhoneInput';
+PhoneInput.displayName = "PhoneInput";
 
 const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => (
     <Input
-      className={cn('rounded-e-md rounded-s-none', className)}
+      className={cn("rounded-e-md rounded-s-none", className)}
       {...props}
       ref={ref}
     />
   )
 );
-InputComponent.displayName = 'InputComponent';
+InputComponent.displayName = "InputComponent";
 
 type CountrySelectOption = { label: string; value: RPNInput.Country };
 
@@ -113,7 +113,7 @@ const CountrySelect = ({
           type="button"
           variant="outline-hover"
           className={cn(
-            '-mr-[1px] flex gap-1 rounded-e-none rounded-s-md px-3 hover:z-10'
+            "-mr-[1px] flex gap-1 rounded-e-none rounded-s-md px-3 hover:z-10"
           )}
           disabled={disabled}
         >
@@ -121,8 +121,8 @@ const CountrySelect = ({
 
           <ArrowDown01Icon
             className={cn(
-              '-mr-2 h-4 w-4 opacity-50',
-              disabled ? 'hidden' : 'opacity-100'
+              "-mr-2 h-4 w-4 opacity-50",
+              disabled ? "hidden" : "opacity-100"
             )}
           />
         </Button>
@@ -130,12 +130,12 @@ const CountrySelect = ({
       <PopoverContent className="w-[300px] p-0" align="start">
         <Command>
           <CommandInput
-            placeholder={searchCountryPlaceholder || 'Search country...'}
+            placeholder={searchCountryPlaceholder || "Search country..."}
           />
           <CommandList className="overflow-y-hidden">
             <ScrollArea className="h-72">
               <CommandEmpty>
-                {searchEmptyLabel || 'No country found.'}
+                {searchEmptyLabel || "No country found."}
               </CommandEmpty>
               <CommandGroup>
                 {options
@@ -158,8 +158,8 @@ const CountrySelect = ({
                       )}
                       <CheckIcon
                         className={cn(
-                          'ml-auto h-4 w-4',
-                          option.value === value ? 'opacity-100' : 'opacity-0'
+                          "ml-auto h-4 w-4",
+                          option.value === value ? "opacity-100" : "opacity-0"
                         )}
                       />
                     </CommandItem>
@@ -182,6 +182,6 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
     </span>
   );
 };
-FlagComponent.displayName = 'FlagComponent';
+FlagComponent.displayName = "FlagComponent";
 
 export { PhoneInput };

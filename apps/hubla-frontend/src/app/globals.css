@@ -10,8 +10,8 @@
     --card-foreground: 0 0% 8.9%;
     --popover: 0 0% 99.7%;
     --popover-foreground: 0 0% 8.9%;
---primary: var(--foreground);
---primary-foreground: var(--background);
+    --primary: var(--foreground);
+    --primary-foreground: var(--background);
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 86.1%;

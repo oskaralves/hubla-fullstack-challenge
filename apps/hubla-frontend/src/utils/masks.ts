@@ -1,8 +1,8 @@
 const formatCellphone = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length === 0) {
-    return '';
+    return "";
   } else if (cleaned.length <= 2) {
     return `(${cleaned}`;
   } else if (cleaned.length <= 7) {
@@ -12,7 +12,7 @@ const formatCellphone = (value: string) => {
   }
 };
 const formatCpf = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length <= 3) {
     return cleaned;
@@ -26,7 +26,7 @@ const formatCpf = (value: string) => {
 };
 
 const formatCnpj = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length <= 2) {
     return cleaned;
@@ -41,7 +41,7 @@ const formatCnpj = (value: string) => {
   }
 };
 const formatZipcode = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length <= 5) {
     return cleaned;
@@ -51,10 +51,10 @@ const formatZipcode = (value: string) => {
 };
 
 const formatMonthYear = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length === 0) {
-    return '';
+    return "";
   } else if (cleaned.length <= 2) {
     return cleaned;
   } else {
@@ -63,7 +63,7 @@ const formatMonthYear = (value: string) => {
 };
 
 const formatRg = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length <= 2) {
     return cleaned;
@@ -77,7 +77,7 @@ const formatRg = (value: string) => {
 };
 
 const formatCnh = (value: string) => {
-  const cleaned = value.replace(/\D/g, '');
+  const cleaned = value.replace(/\D/g, "");
 
   if (cleaned.length <= 3) {
     return cleaned;
@@ -90,13 +90,13 @@ const formatCnh = (value: string) => {
   }
 };
 type MaskNameType =
-  | 'cellphone'
-  | 'cpf'
-  | 'rg'
-  | 'cnh'
-  | 'cnpj'
-  | 'zipcode'
-  | 'monthYear';
+  | "cellphone"
+  | "cpf"
+  | "rg"
+  | "cnh"
+  | "cnpj"
+  | "zipcode"
+  | "monthYear";
 
 const masksMapper: Record<MaskNameType, (value: string) => string> = {
   cellphone: formatCellphone,

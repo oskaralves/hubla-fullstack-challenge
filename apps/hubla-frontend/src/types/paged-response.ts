@@ -1,4 +1,4 @@
-import { ResponseException } from './exception';
+import { ResponseException } from "./exception";
 
 export type Link = {
   prev?: string | null;

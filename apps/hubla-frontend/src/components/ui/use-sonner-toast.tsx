@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import { ExternalToast, toast as sonnerToast, ToastT } from 'sonner';
+import { ReactNode } from "react";
+import { ExternalToast, toast as sonnerToast, ToastT } from "sonner";
 
 type UseSonnerToastOptions = ExternalToast & {
   title: ReactNode;
   description?: ReactNode;
-  type?: ToastT['type'];
+  type?: ToastT["type"];
 };
 
 // Hook personalizado para exibir toasts com suporte para variantes

@@ -1,6 +1,6 @@
-import { DictionaryType, getDictionary } from '@/dictionaries';
-import { ResponseError } from '@/types/common';
-import { getLocale } from '@/utils/locale';
+import { DictionaryType, getDictionary } from "@/dictionaries";
+import { ResponseError } from "@/types/common";
+import { getLocale } from "@/utils/locale";
 
 export const getMessage = async <K extends keyof DictionaryType | undefined>(
   key: K
@@ -12,7 +12,7 @@ export const getMessage = async <K extends keyof DictionaryType | undefined>(
 export const getError = async (err: any): Promise<ResponseError> => {
   const {
     ERROR: { INTERNAL_SERVER_ERROR },
-  } = await getMessage('feedback');
+  } = await getMessage("feedback");
 
   const INTERNAL_ERROR = {
     code: err?.error?.statusCode || err?.cause?.code,

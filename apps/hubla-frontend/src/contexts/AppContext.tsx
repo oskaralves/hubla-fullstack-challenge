@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   ReactNode,
   createContext,
@@ -6,10 +6,10 @@ import {
   useContext,
   useEffect,
   useState,
-} from 'react';
+} from "react";
 
-import { APP_SIDEBAR_EXPANDED } from '@/constants';
-import { setCookie } from 'cookies-next';
+import { APP_SIDEBAR_EXPANDED } from "@/constants";
+import { setCookie } from "cookies-next";
 type AppContextProps = {
   sidebarExpanded: boolean;
   handleToggleSidebar: () => void;
@@ -30,7 +30,7 @@ const AppContextProvider = ({
   children: ReactNode | ReactNode[];
 }) => {
   const [sidebarExpanded, setSidebarExpanded] = useState<
-    AppContextProps['sidebarExpanded']
+    AppContextProps["sidebarExpanded"]
   >(defaultSidebarExpanded);
 
   const handleToggleSidebar = useCallback(() => {

@@ -1,6 +1,6 @@
-import { ExceptionError } from './exception';
+import { ExceptionError } from "./exception";
 
-export type CommonStatusEnum = 'DISABLED' | 'ENABLED' | 'REMOVED';
+export type CommonStatusEnum = "DISABLED" | "ENABLED" | "REMOVED";
 
 export type SearchParams = { [key: string]: string | undefined };
 
@@ -15,4 +15,3 @@ export type ResponseError = {
 };
 
 export type ResponseResult<T> = ResponseSuccess<T> | ResponseError;
-

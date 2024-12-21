@@ -1,30 +1,30 @@
-import { cn } from '@/lib/utils';
-import { VariantProps, cva } from 'class-variance-authority';
+import { cn } from "@/lib/utils";
+import { VariantProps, cva } from "class-variance-authority";
 
 const loadingVariants = cva(
-  'transform-none opacity-100 transition-all duration-500 ease-in-out vertical-align-middle transform-origin-center animate-rotate',
+  "transform-none opacity-100 transition-all duration-500 ease-in-out vertical-align-middle transform-origin-center animate-rotate",
   {
     variants: {
       variant: {
-        default: 'stroke-white',
-        destructive: 'stroke-white',
-        outline: 'stroke-primary',
-        'outline-hover': 'stroke-primary',
-        secondary: 'stroke-white',
-        ghost: 'stroke-primary',
-        link: 'stroke-primary',
-        icon: 'stroke-primary',
+        default: "stroke-white",
+        destructive: "stroke-white",
+        outline: "stroke-primary",
+        "outline-hover": "stroke-primary",
+        secondary: "stroke-white",
+        ghost: "stroke-primary",
+        link: "stroke-primary",
+        icon: "stroke-primary",
       },
       size: {
-        default: 'h-4 w-4',
-        sm: 'h-3 w-3',
-        icon: 'h-4 w-4',
-        lg: 'h-6 w-6',
+        default: "h-4 w-4",
+        sm: "h-3 w-3",
+        icon: "h-4 w-4",
+        lg: "h-6 w-6",
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'default',
+      variant: "default",
+      size: "default",
     },
   }
 );

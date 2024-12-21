@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { BASE_ROUTE } from '@/navigation/urls';
-import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import { BASE_ROUTE } from "@/navigation/urls";
+import Link from "next/link";
 
 export default function NotFound() {
   return (

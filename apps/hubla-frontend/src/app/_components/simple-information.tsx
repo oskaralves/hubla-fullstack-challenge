@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { useSonnerToast } from '@/components/ui/use-sonner-toast';
-import { useDictionary } from '@/contexts/dictionary-context';
-import { cn } from '@/lib/utils';
-import { copyToClipboard } from '@/utils/copy-to-clipboard';
-import { Copy02Icon } from 'hugeicons-react';
-import Link from 'next/link';
-import { Fragment, ReactNode } from 'react';
-import { ActionProps } from './section-card';
+} from "@/components/ui/tooltip";
+import { useSonnerToast } from "@/components/ui/use-sonner-toast";
+import { useDictionary } from "@/contexts/dictionary-context";
+import { cn } from "@/lib/utils";
+import { copyToClipboard } from "@/utils/copy-to-clipboard";
+import { Copy02Icon } from "hugeicons-react";
+import Link from "next/link";
+import { Fragment, ReactNode } from "react";
+import { ActionProps } from "./section-card";
 
 export type SimpleInformation = {
   label?: string;
@@ -45,7 +45,7 @@ export const SimpleInformation = ({
       const divElement = (
         <div
           className={cn(
-            'flex h-8 min-w-8 items-center justify-center rounded-sm',
+            "flex h-8 min-w-8 items-center justify-center rounded-sm",
             action?.className
           )}
         >
@@ -66,11 +66,11 @@ export const SimpleInformation = ({
     const button = action?.href ? (
       <Link href={action.href} target={action?.target}>
         <Button
-          variant={action?.variant ?? 'outline-hover'}
+          variant={action?.variant ?? "outline-hover"}
           size="sm"
           className={cn(
-            'h-8 min-w-8 rounded-sm',
-            { 'p-0': action.title },
+            "h-8 min-w-8 rounded-sm",
+            { "p-0": action.title },
             action?.className
           )}
           onClick={action.onClick}
@@ -80,11 +80,11 @@ export const SimpleInformation = ({
       </Link>
     ) : (
       <Button
-        variant={action?.variant ?? 'outline-hover'}
+        variant={action?.variant ?? "outline-hover"}
         size="sm"
         className={cn(
-          'h-8 min-w-8 rounded-sm',
-          { 'p-0': action.title },
+          "h-8 min-w-8 rounded-sm",
+          { "p-0": action.title },
           action?.className
         )}
         onClick={action.onClick}
@@ -107,7 +107,7 @@ export const SimpleInformation = ({
     copyToClipboard(value);
 
     const toastId = showToast({
-      type: 'normal',
+      type: "normal",
       icon: <Copy02Icon className="h-5 w-5" />,
       title: `${label} ${COPIED}!`,
       description: valueToClipboard,
@@ -122,7 +122,7 @@ export const SimpleInformation = ({
   return (
     <div
       className={cn(
-        'grid grid-cols-[1fr_auto] items-center gap-2 rounded-sm bg-card-foreground/[2%] p-2 hover:bg-card-foreground/5',
+        "grid grid-cols-[1fr_auto] items-center gap-2 rounded-sm bg-card-foreground/[2%] p-2 hover:bg-card-foreground/5",
         className
       )}
     >
@@ -138,17 +138,17 @@ export const SimpleInformation = ({
         <div className="block break-words text-sm font-semibold">
           {hasValue ? (
             <>
-              {typeof value === 'string' ? (
+              {typeof value === "string" ? (
                 <span
                   className="block break-words text-sm font-semibold"
                   dangerouslySetInnerHTML={{ __html: value }}
                 />
               ) : (
-                value ?? '—'
+                (value ?? "—")
               )}
             </>
           ) : (
-            '—'
+            "—"
           )}
         </div>
       </div>

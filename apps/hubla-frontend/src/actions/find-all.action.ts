@@ -1,9 +1,9 @@
-'use server';
+"use server";
 
-import { RequestOptions, api } from '@/lib/api';
-import { ResponseException } from '@/types/exception';
-import { PagedResponse } from '@/types/paged-response';
-import { BuildQueryStringProps, buildQueryString } from '@/utils/url';
+import { RequestOptions, api } from "@/lib/api";
+import { ResponseException } from "@/types/exception";
+import { PagedResponse } from "@/types/paged-response";
+import { BuildQueryStringProps, buildQueryString } from "@/utils/url";
 
 type FindAllActionProps = {
   endpoint: string;
@@ -31,7 +31,7 @@ export const findAllAction = async <T = any>({
     const INTERNAT_SERVER_ERROR: ResponseException = {
       error: {
         code: error?.cause?.code || error?.code,
-        message: 'Sem resposta do servidor',
+        message: "Sem resposta do servidor",
         statusCode: 500,
       },
     };

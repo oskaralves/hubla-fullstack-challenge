@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import { createContext, useContext, useState, useTransition } from 'react';
-import { Country } from 'react-phone-number-input';
+import { useRouter } from "next/navigation";
+import { createContext, useContext, useState, useTransition } from "react";
+import { Country } from "react-phone-number-input";
 
-export type Locale = 'pt-BR' | 'en-US';
+export type Locale = "pt-BR" | "en-US";
 export const countries: Record<Locale, Country> = {
-  'pt-BR': 'BR',
-  'en-US': 'US',
+  "pt-BR": "BR",
+  "en-US": "US",
 };
 type LanguageContextProps = {
   locale: Locale;
@@ -34,10 +34,10 @@ export const LanguageProvider = ({
 
   const handleSetLocale = async (newLocale: Locale) => {
     startTransition(async () => {
-      await fetch('/api/set-locale', {
-        method: 'POST',
+      await fetch("/api/set-locale", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ locale: newLocale }),
       });
@@ -62,7 +62,7 @@ export const LanguageProvider = ({
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };

@@ -1,22 +1,22 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { cn } from '@/lib/utils';
-import { MaskNameType, masksMapper } from '@/utils/masks';
-import { VariantProps, cva } from 'class-variance-authority';
-import { Loading } from './loading';
+import { cn } from "@/lib/utils";
+import { MaskNameType, masksMapper } from "@/utils/masks";
+import { VariantProps, cva } from "class-variance-authority";
+import { Loading } from "./loading";
 
 const inputVariants = cva(
-  'flex h-10 w-full rounded-md border border-input bg-background/40 px-3 py-2 text-sm ring-offset-background transition-all file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+  "flex h-10 w-full rounded-md border border-input bg-background/40 px-3 py-2 text-sm ring-offset-background transition-all file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: 'border bg-background text-foreground',
-        destructive: 'border-red-500 bg-red-50 text-red-900',
-        success: 'border-green-600 bg-green-50 text-green-900',
+        default: "border bg-background text-foreground",
+        destructive: "border-red-500 bg-red-50 text-red-900",
+        success: "border-green-600 bg-green-50 text-green-900",
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: "default",
     },
   }
 );
@@ -83,7 +83,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 className="size-5"
               />
             ) : (
-              endIcon ?? null
+              (endIcon ?? null)
             )}
           </div>
         ) : null}
@@ -92,6 +92,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = 'Input';
+Input.displayName = "Input";
 
 export { Input };

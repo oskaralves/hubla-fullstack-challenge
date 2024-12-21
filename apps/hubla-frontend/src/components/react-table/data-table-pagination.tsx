@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { ROWS_PER_PAGE_OPTIONS } from '@/constants';
-import { useDictionary } from '@/contexts/dictionary-context';
-import { translateFormatter } from '@/dictionaries/utils';
-import { Table } from '@tanstack/react-table';
+} from "@/components/ui/select";
+import { ROWS_PER_PAGE_OPTIONS } from "@/constants";
+import { useDictionary } from "@/contexts/dictionary-context";
+import { translateFormatter } from "@/dictionaries/utils";
+import { Table } from "@tanstack/react-table";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronsLeftIcon,
   ChevronsRightIcon,
-} from 'lucide-react';
+} from "lucide-react";
 
 type DataTablePaginationProps<TData> = {
   table: Table<TData>;

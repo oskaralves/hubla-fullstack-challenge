@@ -1,5 +1,5 @@
-import { Skeleton } from '@/components/ui/skeleton';
-import { SimpleInformation } from '../_components/simple-information';
+import { Skeleton } from "@/components/ui/skeleton";
+import { SimpleInformation } from "../_components/simple-information";
 
 export type SimpleInformationSkeletonProps = {
   rowCount?: number;

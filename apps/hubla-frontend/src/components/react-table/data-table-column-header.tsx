@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import { Column } from '@tanstack/react-table';
+import { Column } from "@tanstack/react-table";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { useDictionary } from '@/contexts/dictionary-context';
-import { translateFormatter } from '@/dictionaries/utils';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/dropdown-menu";
+import { useDictionary } from "@/contexts/dictionary-context";
+import { translateFormatter } from "@/dictionaries/utils";
+import { cn } from "@/lib/utils";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
   ChevronsUpDownIcon,
   EyeOffIcon,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -41,7 +41,7 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn('flex items-center space-x-2', className)}>
+    <div className={cn("flex items-center space-x-2", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -51,9 +51,9 @@ export function DataTableColumnHeader<TData, TValue>({
             title={translateFormatter(SORT_BY_COLUMN, { column: title })}
           >
             <span>{title}</span>
-            {column.getIsSorted() === 'desc' ? (
+            {column.getIsSorted() === "desc" ? (
               <ArrowDownIcon className="ml-2 h-4 w-4" />
-            ) : column.getIsSorted() === 'asc' ? (
+            ) : column.getIsSorted() === "asc" ? (
               <ArrowUpIcon className="ml-2 h-4 w-4" />
             ) : (
               <ChevronsUpDownIcon className="ml-2 h-4 w-4" />

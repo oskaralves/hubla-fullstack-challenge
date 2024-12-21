@@ -15,7 +15,7 @@ export class TransactionTypeDto {
   @ApiProperty({
     description: 'INCOME or EXPENSE',
     example: 'INCOME',
-    enum: TransactionNatureEnum
+    enum: TransactionNatureEnum,
   })
   nature: TransactionNatureEnum;
 }

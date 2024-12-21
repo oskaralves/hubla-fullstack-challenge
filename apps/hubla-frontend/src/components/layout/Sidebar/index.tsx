@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useAppContext } from '@/contexts/AppContext';
-import { useLanguage } from '@/contexts/language-context';
-import { cn } from '@/lib/utils';
-import { getNavigation } from '@/navigation';
-import { SessionUser } from '@/types/auth';
-import { ReactNode } from 'react';
-import { MenuItem } from './MenuItem';
+import { useAppContext } from "@/contexts/AppContext";
+import { useLanguage } from "@/contexts/language-context";
+import { cn } from "@/lib/utils";
+import { getNavigation } from "@/navigation";
+import { SessionUser } from "@/types/auth";
+import { ReactNode } from "react";
+import { MenuItem } from "./MenuItem";
 
 export type SidebarProps = {
   user: SessionUser;
@@ -20,8 +20,8 @@ export const Sidebar = ({ user, children }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        'hidden min-h-full flex-col gap-3 transition-all md:flex',
-        sidebarExpanded ? 'w-[246px]' : 'w-[70px]'
+        "hidden min-h-full flex-col gap-3 transition-all md:flex",
+        sidebarExpanded ? "w-[246px]" : "w-[70px]"
       )}
     >
       <nav className="flex h-full flex-col">

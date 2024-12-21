@@ -14,4 +14,4 @@ import { TransactionTypeModule } from './transaction-type/transaction-type.modul
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}

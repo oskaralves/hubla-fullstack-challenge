@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
-import { Table } from '@tanstack/react-table';
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { Table } from "@tanstack/react-table";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { useDictionary } from '@/contexts/dictionary-context';
-import { Settings05Icon } from 'hugeicons-react';
+} from "@/components/ui/dropdown-menu";
+import { useDictionary } from "@/contexts/dictionary-context";
+import { Settings05Icon } from "hugeicons-react";
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
@@ -44,12 +44,12 @@ export function DataTableViewOptions<TData>({
           .getAllColumns()
           .filter(
             (column) =>
-              typeof column.accessorFn !== 'undefined' && column.getCanHide()
+              typeof column.accessorFn !== "undefined" && column.getCanHide()
           )
           .map((column) => {
             const columnTitle =
               // @ts-ignore
-              column.columnDef?.meta?.['title'] || column.id;
+              column.columnDef?.meta?.["title"] || column.id;
 
             return (
               <DropdownMenuCheckboxItem

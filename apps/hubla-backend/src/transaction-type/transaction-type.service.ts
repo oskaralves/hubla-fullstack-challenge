@@ -16,10 +16,7 @@ export class TransactionTypeService {
     'description',
   ];
 
-  constructor(
-    private readonly prismaService: PrismaService,
-  ) { }
-
+  constructor(private readonly prismaService: PrismaService) {}
 
   async findAll({
     search = '',
@@ -59,5 +56,4 @@ export class TransactionTypeService {
       totalRows,
     }) as PagedTransactionTypesResponseDto;
   }
-
 }

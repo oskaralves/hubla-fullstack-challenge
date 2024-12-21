@@ -1,6 +1,6 @@
-import { useAppContext } from '@/contexts/AppContext';
-import { MenuItem } from './MenuItem';
-import { MenuItemProps } from './types';
+import { useAppContext } from "@/contexts/AppContext";
+import { MenuItem } from "./MenuItem";
+import { MenuItemProps } from "./types";
 
 export const MenuItemGroup = ({ item }: MenuItemProps) => {
   const { sidebarExpanded } = useAppContext();

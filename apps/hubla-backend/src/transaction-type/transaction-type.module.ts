@@ -6,4 +6,4 @@ import { TransactionTypeService } from './transaction-type.service';
   controllers: [TransactionTypeController],
   providers: [TransactionTypeService],
 })
-export class TransactionTypeModule { }
+export class TransactionTypeModule {}

@@ -1,12 +1,12 @@
-import { menuItemIconProps } from '@/constants';
-import { useAppContext } from '@/contexts/AppContext';
-import { cn } from '@/lib/utils';
-import { useCycle } from 'framer-motion';
-import { ChevronDownIcon } from 'lucide-react';
-import { usePathname } from 'next/navigation';
-import { MenuItem } from './MenuItem';
-import { TitleHover } from './TitleHover';
-import { MenuItemProps } from './types';
+import { menuItemIconProps } from "@/constants";
+import { useAppContext } from "@/contexts/AppContext";
+import { cn } from "@/lib/utils";
+import { useCycle } from "framer-motion";
+import { ChevronDownIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { MenuItem } from "./MenuItem";
+import { TitleHover } from "./TitleHover";
+import { MenuItemProps } from "./types";
 
 export const MenuItemCollapse = ({ item, className }: MenuItemProps) => {
   const pathname = usePathname();
@@ -20,11 +20,11 @@ export const MenuItemCollapse = ({ item, className }: MenuItemProps) => {
         <button
           onClick={() => toggleOpen()}
           className={`mx-1 flex flex-row items-center justify-between space-x-2 rounded-md p-3 transition-colors hover:bg-neutral-500/10
-          ${isOpen ? 'rounded-b-none bg-neutral-500/10' : ''}
+          ${isOpen ? "rounded-b-none bg-neutral-500/10" : ""}
           ${
             pathname.includes(item.url as string)
-              ? 'bg-purple-500/20 hover:bg-purple-500/20'
-              : ''
+              ? "bg-purple-500/20 hover:bg-purple-500/20"
+              : ""
           }`}
         >
           <div className="items-center justify-center transition-all">
@@ -38,8 +38,8 @@ export const MenuItemCollapse = ({ item, className }: MenuItemProps) => {
 
           <div
             className={`flex transition-all
-            ${isOpen ? 'rotate-180' : ''}
-            ${!sidebarExpanded ? 'absolute left-[13px] top-8' : ''}`}
+            ${isOpen ? "rotate-180" : ""}
+            ${!sidebarExpanded ? "absolute left-[13px] top-8" : ""}`}
           >
             <ChevronDownIcon
               width={sidebarExpanded ? 16 : 12}
@@ -54,8 +54,8 @@ export const MenuItemCollapse = ({ item, className }: MenuItemProps) => {
         {isOpen && item?.children?.length && (
           <ul
             className={`mx-1 flex flex-col py-2
-            ${sidebarExpanded ? 'p-1 py-2' : ''}
-            ${isOpen ? 'rounded-b-md bg-neutral-500/10 ' : ''}`}
+            ${sidebarExpanded ? "p-1 py-2" : ""}
+            ${isOpen ? "rounded-b-md bg-neutral-500/10 " : ""}`}
           >
             {item.children?.map((subItem, idx) => {
               return (
@@ -63,8 +63,8 @@ export const MenuItemCollapse = ({ item, className }: MenuItemProps) => {
                   key={idx}
                   item={subItem}
                   className={cn(
-                    'rounded-sm p-2',
-                    sidebarExpanded ? className : 'mx-0 rounded-none'
+                    "rounded-sm p-2",
+                    sidebarExpanded ? className : "mx-0 rounded-none"
                   )}
                 />
               );

@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 type AppAvatarProps = {
   id?: string;
@@ -9,12 +9,12 @@ type AppAvatarProps = {
   imageDefault?: string;
 };
 export const AppAvatar = ({
-  id = 'avatar',
+  id = "avatar",
   imageUrl,
   size = 56,
   strokeWidth = 0,
   className,
-  imageDefault = '/images/defaults/avatar.svg',
+  imageDefault = "/images/defaults/avatar.svg",
 }: AppAvatarProps) => {
   return (
     <div
@@ -37,7 +37,7 @@ export const AppAvatar = ({
           d="M0 28C0 14.8007 -3.51354e-07 8.20102 4.1005 4.1005C8.20102 -3.51354e-07 14.8007 0 28 0C41.1992 0 47.7989 -3.51354e-07 51.8996 4.1005C56 8.20102 56 14.8007 56 28C56 41.1992 56 47.7989 51.8996 51.8996C47.7989 56 41.1992 56 28 56C14.8007 56 8.20102 56 4.1005 51.8996C-3.51354e-07 47.7989 0 41.1992 0 28Z"
           fill="none"
           strokeWidth={strokeWidth}
-          className={cn('-z-1  transition-all', className)}
+          className={cn("-z-1  transition-all", className)}
         />
         <g mask={`url(#${id})`}>
           <path

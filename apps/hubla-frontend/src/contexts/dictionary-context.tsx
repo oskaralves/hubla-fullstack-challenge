@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { DictionaryType } from '@/dictionaries';
-import { createContext, useContext } from 'react';
+import { DictionaryType } from "@/dictionaries";
+import { createContext, useContext } from "react";
 
 type DictionaryContextType = DictionaryType | undefined;
 
@@ -24,7 +24,7 @@ export const DictionaryProvider = ({
 export const useDictionary = () => {
   const context = useContext(DictionaryContext);
   if (!context) {
-    throw new Error('useDictionary must be used within a DictionaryProvider');
+    throw new Error("useDictionary must be used within a DictionaryProvider");
   }
   return context;
 };

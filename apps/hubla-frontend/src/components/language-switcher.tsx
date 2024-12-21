@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Locale, useLanguage } from '@/contexts/language-context';
-import Image from 'next/image';
-import { Button } from './ui/button';
+import { Locale, useLanguage } from "@/contexts/language-context";
+import Image from "next/image";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu';
+} from "./ui/dropdown-menu";
 
 export const LanguageSwitcher = () => {
   const { isPending, locale, setLocale } = useLanguage();
@@ -22,7 +22,7 @@ export const LanguageSwitcher = () => {
   }) => {
     // svg flags https://lineicons.com/free-icons/circle-flags
     switch (locale) {
-      case 'pt-BR':
+      case "pt-BR":
         return (
           <Image
             src="/svgs/flags/pt-br.svg"
@@ -30,10 +30,10 @@ export const LanguageSwitcher = () => {
             width={size}
             height={size}
             unoptimized
-            style={{ objectFit: 'contain', margin: -4 }}
+            style={{ objectFit: "contain", margin: -4 }}
           />
         );
-      case 'en-US':
+      case "en-US":
         return (
           <Image
             src="/svgs/flags/en-us.svg"
@@ -41,7 +41,7 @@ export const LanguageSwitcher = () => {
             width={size}
             height={size}
             unoptimized
-            style={{ objectFit: 'contain', margin: -4 }}
+            style={{ objectFit: "contain", margin: -4 }}
           />
         );
       default:
@@ -62,11 +62,11 @@ export const LanguageSwitcher = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLocale('pt-BR')}>
+        <DropdownMenuItem onClick={() => setLocale("pt-BR")}>
           <CurrentFlagIcon locale="pt-BR" />
           Português (BR)
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLocale('en-US')}>
+        <DropdownMenuItem onClick={() => setLocale("en-US")}>
           <CurrentFlagIcon locale="en-US" />
           English (US)
         </DropdownMenuItem>

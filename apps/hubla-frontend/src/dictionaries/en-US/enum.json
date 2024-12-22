@@ -1,6 +1,6 @@
 {
   "TRANSACTION_TYPE_NATURE_ENUM": {
-    "INCOME": "Income",
-    "EXPENSE": "Expense"
+    "INPUT": "Income",
+    "OUTPUT": "Expense"
   }
 }

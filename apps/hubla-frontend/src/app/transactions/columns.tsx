@@ -11,6 +11,7 @@ import { formatData } from "@/utils/date";
 import { ColumnDef } from "@tanstack/react-table";
 import { RemoveSquareIcon } from "hugeicons-react";
 import { PlusSquareIcon } from "lucide-react";
+import { commonTransactionTypeNatureVariants } from "../../constants/common";
 
 export const useTransactionListColumns = () => {
   const {
@@ -133,8 +134,15 @@ export const useTransactionListColumns = () => {
       ),
       cell: ({ row }) => (
         <div>
-          <Badge variant="default" className="gap-1">
-            {row?.original?.transactionType.description}
+          <Badge
+            variant={
+              commonTransactionTypeNatureVariants[
+                row.original.transactionType.nature
+              ]
+            }
+            className="gap-1"
+          >
+            {row?.original?.transactionType.description.toUpperCase()}
           </Badge>
         </div>
       ),

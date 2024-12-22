@@ -16,7 +16,7 @@ export class SellerBalanceDto {
   })
   @IsInt()
   @IsNotEmpty()
-  value: number;
+  balance: number;
 
   @ApiProperty({
     description: 'Last transaction date',

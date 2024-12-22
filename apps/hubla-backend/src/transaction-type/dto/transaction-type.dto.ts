@@ -5,7 +5,7 @@ export class TransactionTypeDto {
   @ApiProperty({
     description: 'Transaction type Id',
   })
-  id: string;
+  id: number;
 
   @ApiProperty({
     description: 'Transaction type description',

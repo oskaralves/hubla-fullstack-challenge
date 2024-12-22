@@ -7,9 +7,13 @@ para oferecer uma solução completa e robusta:
    PostgreSQL, proporcionando uma arquitetura escalável, modular e segura para
    gerenciar transações e dados essenciais.
 
+![hubla-backend](hubla-backend-swagger.png)
+
 2. **Hubla Frontend:** Uma interface moderna e dinâmica construída com React,
    Next.js, Tailwind CSS, e Shadcn UI, focada em responsividade, acessibilidade
    e experiência do usuário.
+
+![hubla-frontend](hubla-frontend.png)
 
 Este documento detalha as instruções para configurar e executar o ambiente tanto
 em modo de desenvolvimento quanto em modo de produção, além de fornecer
@@ -63,7 +67,7 @@ instalados:
 
 ### 1. Subir o ambiente com Docker Compose
 
-Na raiz do monorepo, execute:
+![containers](containers.png) Na raiz do monorepo, execute:
 
 ```bash
 # Subir apenas os serviços necessários para desenvolvimento
@@ -76,6 +80,32 @@ seguintes serviços:
 - **PostgreSQL**: Banco de dados na porta `5432`.
 - **pgAdmin**: Interface para gerenciar o PostgreSQL, acessível em
   `http://localhost:16543`.
+
+### 2. Rodar o Ambiente em Modo Hot Reload
+
+Caso precise alterar algum arquivo durante o desenvolvimento e ver as alterações
+em tempo real:
+
+```bash
+yarn dev:all
+```
+
+### 3. Rodar o Ambiente de Forma Mais Rápida (Sem Lentidão)
+
+```bash
+# Primeiro terminal: Executar o backend
+cd apps/hubla-backend/ && yarn start:dev
+```
+
+```bash
+# Segundo terminal: Construir e executar o frontend
+cd apps/hubla-frontend/ && yarn build && yarn start
+```
+
+#### **:rocket: Agora** Acesse os links:
+
+1. http://localhost:3000
+2. http://localhost:3010/docs
 
 Para encerrar os contêineres:
 
@@ -219,7 +249,65 @@ Remove todas as tabelas e recria o banco de dados com base no esquema.
 npx prisma migrate reset
 ```
 
+## **Testes**
+
+O backend do projeto foi desenvolvido com suporte a testes unitários e de
+integração (E2E) utilizando o **Jest** e o **Supertest**. Abaixo estão os
+detalhes sobre a configuração e execução dos testes:
+
 ---
+
+### **Testes Unitários**
+
+Os testes unitários foram implementados para garantir que as funções e métodos
+individuais funcionem conforme o esperado. Abaixo estão os principais pontos:
+
+- **Framework:** Jest
+- **Cobertura:** Controllers e serviços individuais.
+- **Scripts para execução:**
+
+```bash
+# Executar todos os testes unitários
+yarn test
+
+# Executar testes unitários em modo watch
+yarn test:watch
+```
+
+#### Gerar relatório dos testes unitários
+
+```bash
+# Gerar cobertura dos testes
+yarn test:cov
+
+# Abrir o relatório no navegador (Linux/MacOS)
+open coverage/lcov-report/index.html
+
+# Abrir o relatório no navegador (Windows)
+start coverage/lcov-report/index.html
+```
+
+![open coverage/lcov-report/index.html](test-coverage-html.png)
+<img src="test-unit-coverage.png" alt="yarn jest:cov" style="width:100%; max-width: 800px;">
+
+### **Testes de Integração (E2E)**
+
+Os testes E2E garantem que os módulos e componentes interajam corretamente no
+sistema como um todo. Eles verificam se as rotas, serviços e banco de dados
+funcionam de maneira integrada.
+
+> :bulb: **NOTA:** o app hubla-backend precisa estar rodando
+
+- **Frameworks:** Jest e Supertest
+- **Cobertura:** Rotas e interações entre os módulos.
+- **Scripts para execução:**
+
+```bash
+# Executar testes E2E
+yarn test:e2e
+```
+
+<img src="test-e2e.png" alt="yarn test:e2e" style="width:100%; max-width: 800px;">
 
 ## **Frontend**
 
@@ -403,3 +491,63 @@ hubla-frontend/
 
 Essa estrutura é bem organizada e segue boas práticas para projetos modernos com
 Next.js e TypeScript.
+
+---
+
+## **Backlog de Atividades**
+
+### :check: **Atividades Realizadas**
+
+#### **Backend**
+
+- [x] Configurar boilerplate no monorepo.
+- [x] Configurar Prettier e Lint para o projeto Frontend e Backend.
+- [x] Estruturar modelo do banco de dados (tabelas).
+- [x] Configurar Dockerfile e Docker Compose no modo dev.
+- [x] Configurar Dockerfile e Docker Compose no modo prod.
+- [x] Configurar o Swagger.
+- [x] Criar DTOs necessários com decorators para validação e documentação no
+      Swagger.
+- [x] Criar controller e services de transactions.
+- [x] Criar o método de `findMany` com paginação e parâmetros de busca para
+      transactions.
+- [x] Adicionar endpoint para importação em bulk (arquivo `.txt`).
+- [x] Aplicar validação de tipo e formato de dados.
+- [x] Adicionar validação de dados já registrados na base de dados.
+- [x] Implementar tratamento de exceções com retorno de mensagens de sucesso e
+      erro.
+- [x] Criar controller e services de transaction-types para filtragem de
+      transactions por tipo.
+- [x] Revisão e Refinamento da documentação no Swagger
+
+#### **Frontend**
+
+- [x] Criar estrutura do Next.js 14 com Tailwind CSS e Shadcn UI.
+- [x] Estruturar layout, tema e navegação.
+- [x] Criar estrutura de DataTable (React Table) com busca, paginação, ordenação
+      server-side e filtros opcionais.
+- [x] Criar página de listagem de transactions.
+- [x] Criar página para importar arquivos de transações (upload).
+- [x] Criar página para listar saldo atual de produtores e afiliados.
+- [x] Adicionar estrutura de internacionalização para dois idiomas (pt-BR e
+      en-US).
+- [x] Validação com zod de schema de upload de arquivo.txt.
+- [x] Tela de Importar arquivo de transações.
+- [x] Tela de Listar Produtor/Afiliado com saldo atual.
+- [x] Revisão e Refinamento das telas e componentes
+- [ ] Implementar teste unitários nos componentes utilizados.
+
+---
+
+### **Atividades "Desejáveis" (pendentes)**
+
+#### **Backend**
+
+- [ ] Implementar Cache Manager com Redis no lado do servidor.
+- [ ] Implementar módulo de autenticação com `accessToken` e `refreshToken`.
+
+#### **Frontend**
+
+- [ ] Implementar testes unitários de componentes utilizando Jest e Testing
+      Library.
+- [ ] Implementar tela e lógica de autenticação.

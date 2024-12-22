@@ -37,5 +37,5 @@
   "UPLOAD_SUCCESS_DESCRIPTION": "{count} transactions imported successfully!",
   "TRANSACTION_FILE_PLACEHOLDER": "Upload the transactions file",
   "TRANSACTION_FILE_FORMAT": "File format (.txt)",
-  "NO_RECORDS_FOUND": "Nenhum registro encontrado"
+  "NO_RECORDS_FOUND": "No records found"
 }

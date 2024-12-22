@@ -1,0 +1,76 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14
+    container_name: hubla-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./apps/hubla-backend/.env
+    environment:
+      POSTGRES_HOST: hubla-postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: hubla
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Abcd123!
+      DB_INTEGRATED_SECURITY: true
+      DB_POOLING: true
+      DATABASE_URL: "postgresql://postgres:Abcd123!@hubla-postgres:5432/hubla?schema=public"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - hubla-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: hubla-pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@hub.la}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-Abcd123!}
+    ports:
+      - "16543:80"
+    depends_on:
+      - postgres
+    networks:
+      - hubla-network
+
+  hubla-backend:
+    build:
+      context: .
+      dockerfile: ./apps/hubla-backend/Dockerfile
+    container_name: hubla-backend
+    ports:
+      - "3010:3010"
+    env_file:
+      - ./apps/hubla-backend/.env
+    environment:
+      DATABASE_URL: "postgresql://postgres:Abcd123!@hubla-postgres:5432/hubla?schema=public"
+    depends_on:
+      - postgres
+    networks:
+      - hubla-network
+
+  hubla-frontend:
+    build:
+      context: .
+      dockerfile: ./apps/hubla-frontend/Dockerfile
+    container_name: hubla-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_BASE_URL: http://hubla-frontend:3000
+      NEXT_PUBLIC_API_BASE_URL: http://hubla-backend:3010
+    depends_on:
+      - hubla-backend
+    networks:
+      - hubla-network
+
+volumes:
+  postgres:
+    name: hubla-postgres
+
+networks:
+  hubla-network:
+    driver: bridge

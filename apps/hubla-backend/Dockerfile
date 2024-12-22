@@ -1,4 +1,4 @@
-# Build Stage
+# Etapa de build
 FROM node:18 AS builder
 
 WORKDIR /app
@@ -6,20 +6,20 @@ WORKDIR /app
 # Copiar os arquivos necessários para instalação
 COPY ./package.json ./yarn.lock ./
 
-# Copiar apenas os arquivos do backend
-
+# Copiar arquivos do projeto
 COPY ./apps/hubla-backend/package*.json ./apps/hubla-backend/
 COPY ./apps/hubla-backend/prisma ./apps/hubla-backend/prisma
 COPY ./apps/hubla-backend/tsconfig*.json ./apps/hubla-backend/
 COPY ./apps/hubla-backend/src ./apps/hubla-backend/src
-COPY ./apps/hubla-backend/.env ./apps/hubla-backend/.env
 
 # Instalar as dependências
-RUN yarn install
+RUN yarn install --frozen-lockfile
+
+# Construir o backend app
+WORKDIR /app/apps/hubla-backend
 
 # Gerar o Prisma Client
-WORKDIR /app/apps/hubla-backend
-RUN yarn prisma generate
+RUN npx prisma generate
 
 # Build do backend
 RUN yarn build
@@ -33,6 +33,15 @@ WORKDIR /app
 COPY --from=builder /app/apps/hubla-backend/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/apps/hubla-backend/package*.json ./
+COPY --from=builder /app/apps/hubla-backend/prisma ./prisma
+COPY --from=builder /app/apps/hubla-backend/tsconfig*.json ./
+COPY --from=builder /app/apps/hubla-backend/src ./src
 
-EXPOSE 3001
-CMD ["yarn", "start:prod"]
+# Instalar apenas `ts-node` no ambiente de produção
+RUN yarn add ts-node --dev
+
+# Expor a porta
+EXPOSE 3010
+
+# Rodar as migrações, o seed e iniciar o server
+CMD ["sh", "-c", "npx prisma migrate deploy && yarn prisma:seed && node dist/src/main"]

@@ -1,4 +1,3 @@
-
 version: '3.8'
 services:
   postgres:
@@ -19,48 +18,14 @@ services:
     container_name: hubla-pgadmin
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@hub.la}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-Abcd123!}
     ports:
       - "16543:80"
     depends_on:
       - postgres
     networks:
       - hubla-network
-
-  # hubla-backend:
-  #   build:
-  #     context: .
-  #     dockerfile: ./apps/hubla-backend/Dockerfile
-  #   container_name: hubla-backend
-  #   command: yarn start:dev
-  #   ports:
-  #     - "3001:3001"
-  #   env_file:
-  #     - ./apps/hubla-backend/.env
-  #   volumes:
-  #     - ./apps/hubla-backend:/app
-  #     - /app/node_modules
-  #   depends_on:
-  #     - postgres
-  #   networks:
-  #     - hubla-network
-
-  # hubla-frontend:
-  #   build:
-  #     context: .
-  #     dockerfile: ./apps/hubla-frontend/Dockerfile
-  #   container_name: hubla-frontend
-  #   command: yarn dev
-  #   ports:
-  #     - "3000:3000"
-  #   env_file:
-  #     - ./apps/hubla-frontend/.env
-  #   volumes:
-  #     - ./apps/hubla-frontend:/app
-  #     - /app/node_modules
-  #   networks:
-  #     - hubla-network
 
 volumes:
   postgres:

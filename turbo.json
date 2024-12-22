@@ -5,7 +5,12 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [
+        "apps/hubla-frontend/.next/**",
+        "!apps/hubla-frontend/.next/cache/**",
+        "apps/hubla-backend/dist/**",
+        "!apps/hubla-backend/dist/cache/**"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]

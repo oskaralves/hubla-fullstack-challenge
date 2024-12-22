@@ -17,6 +17,7 @@ import { useListReactTable } from "@/hooks/use-list-react-table";
 import { cn } from "@/lib/utils";
 import { PagedResponse } from "@/types/paged-response";
 import { SearchIcon } from "lucide-react";
+import { useDictionary } from "../../contexts/dictionary-context";
 import { Skeleton } from "../ui/skeleton";
 
 export type ListReactTableFiltersProps = {
@@ -45,6 +46,7 @@ export function ListReactTable<TData, TValue>({
   options,
   filters,
 }: ListReactTableProps<TData, TValue>) {
+  const { NO_RECORDS_FOUND } = useDictionary().general;
   const {
     table,
     isLoading,
@@ -131,9 +133,9 @@ export function ListReactTable<TData, TValue>({
                         key={cell.id}
                         width={cell.column.columnDef.size}
                         // @ts-ignore
-                        data-title={cell.column.columnDef.meta?.["title"]} // Adiciona o título da coluna
+                        data-title={cell.column.columnDef.meta?.["title"]}
                         className={cn(
-                          "block border-b border-b-border px-4 py-2 md:table-cell md:border-b-0", // Adiciona Tailwind para a responsividade
+                          "block border-b border-b-border px-4 py-2 md:table-cell md:border-b-0",
                           {
                             "pr-0": ["image"].includes(cell.column.id),
                           }
@@ -157,7 +159,7 @@ export function ListReactTable<TData, TValue>({
                     className="h-24 text-center"
                   >
                     <SearchIcon className="mx-auto h-[90px] w-[90px] stroke-foreground opacity-25" />
-                    Nenhum resultado encontrado
+                    {NO_RECORDS_FOUND}
                   </TableCell>
                 </TableRow>
               )}

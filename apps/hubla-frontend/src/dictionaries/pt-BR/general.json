@@ -36,5 +36,6 @@
   "UPLOAD_SUCCESS": "Upload Realizado com Sucesso",
   "UPLOAD_SUCCESS_DESCRIPTION": "{count} transações importadas com sucesso!",
   "TRANSACTION_FILE_PLACEHOLDER": "Faça upload do arquivo de transações",
-  "TRANSACTION_FILE_FORMAT": "Formato do arquivo (.txt)"
+  "TRANSACTION_FILE_FORMAT": "Formato do arquivo (.txt)",
+  "NO_RECORDS_FOUND": "Nenhum registro encontrado"
 }

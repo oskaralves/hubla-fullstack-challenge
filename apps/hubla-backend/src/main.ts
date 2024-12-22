@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as bodyParser from 'body-parser';
 import * as fs from 'fs';
+import * as path from 'path';
 import { AppModule } from './app.module';
 
 const environment = process.env;
@@ -50,7 +51,10 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
 
   SwaggerModule.setup('docs', app, document);
-  fs.writeFileSync('src/swagger.json', JSON.stringify(document, null, 2));
+  fs.writeFileSync(
+    path.resolve(__dirname, 'swagger.json'),
+    JSON.stringify(document, null, 2),
+  );
 
   await app.listen(port);
   console.info(`Server up in port http://localhost:${port}`);

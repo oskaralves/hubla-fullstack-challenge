@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Prisma, TransactionNatureEnum } from '@prisma/client';
 import { plainToClass } from 'class-transformer';
 import { ResponseHelper } from '../common/helpers/response.helper';
 import { SearchHelper } from '../common/helpers/search.helper';
@@ -7,8 +7,10 @@ import { SortHelper } from '../common/helpers/sort.helper';
 import { PrismaService } from '../prisma/prisma.service';
 import { BulkTransactionsResponseDto } from './dto/bulk-transactions-response.dto';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
+import { PagedTransactionSellerBalancesResponseDto } from './dto/paged-balance-response.dto';
 import { PagedTransactionsQueryParamsDto } from './dto/paged-transactions-params.dto';
 import { PagedTransactionsResponseDto } from './dto/paged-transactions-response.dto';
+import { SellerBalanceDto } from './dto/seller-balance.dto';
 import { TransactionDto } from './dto/transaction.dto';
 import { TransactionValidationHelper } from './helpers/transaction-validation.helper';
 
@@ -142,6 +144,99 @@ export class TransactionService {
     });
 
     return plainToClass(TransactionDto, transaction);
+  }
+
+  async findAllSellerBalance({
+    search = '',
+    skip = 0,
+    take = 10,
+    sort = 'seller:asc',
+    path = '/transactions/seller-balances',
+  }: PagedTransactionsQueryParamsDto): Promise<PagedTransactionSellerBalancesResponseDto> {
+    const where = {
+      ...SearchHelper.searchBuilder({ search, fields: ['seller'] }),
+    };
+
+    const orderBy =
+      SortHelper.parseSortParam<Prisma.TransactionOrderByWithAggregationInput>(
+        sort,
+        ['seller'],
+      );
+
+    const transactions = await this.prismaService.transaction.findMany({
+      where: {
+        ...where,
+        transactionType: {
+          nature: {
+            in: [TransactionNatureEnum.INPUT, TransactionNatureEnum.OUTPUT],
+          },
+        },
+      },
+      select: {
+        seller: true,
+        transactionType: { select: { nature: true } },
+        value: true,
+        date: true,
+      },
+      orderBy,
+    });
+
+    const sellerData: Record<
+      string,
+      { balance: number; lastTransactionDate: Date | null }
+    > = {};
+
+    transactions.forEach(
+      ({ seller, transactionType: { nature }, value, date }) => {
+        const currentData = sellerData[seller] ?? {
+          balance: 0,
+          lastTransactionDate: null,
+        };
+        const updatedBalance =
+          nature === TransactionNatureEnum.INPUT
+            ? currentData.balance + value
+            : currentData.balance - value;
+
+        sellerData[seller] = {
+          balance: updatedBalance,
+          lastTransactionDate: currentData.lastTransactionDate ?? date,
+        };
+      },
+    );
+
+    const sellerBalancesArray = Object.entries(sellerData).map(
+      ([seller, { balance, lastTransactionDate }]) => ({
+        seller,
+        balance,
+        lastTransactionDate,
+      }),
+    );
+
+    const paginatedBalances = sellerBalancesArray
+      .sort((a, b) => {
+        const [field, direction] = sort.split(':');
+        const isAscending = direction === 'asc';
+        return isAscending
+          ? a[field] > b[field]
+            ? 1
+            : -1
+          : a[field] < b[field]
+            ? 1
+            : -1;
+      })
+      .slice(skip, skip + take);
+
+    return ResponseHelper.pagedResponse<SellerBalanceDto>({
+      path,
+      search,
+      skip,
+      take,
+      sort,
+      rows: paginatedBalances.map((balance) =>
+        plainToClass(SellerBalanceDto, balance),
+      ),
+      totalRows: sellerBalancesArray.length,
+    });
   }
 
   private parseTransactionLine(line: string) {

@@ -20,6 +20,7 @@ import {
 } from '@nestjs/swagger';
 import { BulkTransactionsResponseDto } from './dto/bulk-transactions-response.dto';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
+import { PagedTransactionSellerBalancesResponseDto } from './dto/paged-balance-response.dto';
 import { PagedTransactionsQueryParamsDto } from './dto/paged-transactions-params.dto';
 import { PagedTransactionsResponseDto } from './dto/paged-transactions-response.dto';
 import { TransactionDto } from './dto/transaction.dto';
@@ -85,6 +86,19 @@ export class TransactionController {
     @Query() queryParams: PagedTransactionsQueryParamsDto,
   ): Promise<PagedTransactionsResponseDto> {
     return this.transactionService.findAll(queryParams);
+  }
+
+  @Get('seller-balances')
+  @ApiOperation({ summary: 'Get balance value by seller' })
+  @ApiOkResponse({
+    description: 'Transaction found',
+    type: PagedTransactionSellerBalancesResponseDto,
+  })
+  @ApiNotFoundResponse({ description: 'Transaction not found' })
+  async getSellersWithBalance(
+    @Query() queryParams: PagedTransactionsQueryParamsDto,
+  ): Promise<PagedTransactionSellerBalancesResponseDto> {
+    return this.transactionService.findAllSellerBalance(queryParams);
   }
 
   @Get(':id')

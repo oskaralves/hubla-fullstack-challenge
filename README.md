@@ -119,6 +119,23 @@ yarn docker:down
 
 ---
 
+## **Executar Local o Ambiente de Produção**
+
+```bash
+yarn docker:prod
+```
+
+Este script configura e executa os contêineres necessários para a aplicação, criando automaticamente os seguintes serviços:
+
+- hubla-postgres: Banco de dados PostgreSQL, responsável pelo armazenamento de dados.
+- hubla-pgadmin: Interface de administração do PostgreSQL, acessível em http://localhost:16543.
+- hubla-backend: API do backend, disponível na porta 3001.
+- hubla-frontend: Aplicação frontend, acessível em http://localhost:3000.
+
+> **Nota:** Todos os serviços são configurados automaticamente usando o arquivo docker-compose.yml no modo de produção. Após a inicialização, a aplicação estará pronta para testes ou uso final em ambiente local.
+
+---
+
 ## **Estrutura do Repositório**
 
 ```

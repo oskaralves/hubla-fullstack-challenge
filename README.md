@@ -70,7 +70,21 @@ Este comando utiliza o arquivo `docker-compose.dev.yml` para configurar os segui
 - **PostgreSQL**: Banco de dados na porta `5432`.
 - **pgAdmin**: Interface para gerenciar o PostgreSQL, acessível em `http://localhost:16543`.
 
-### 2. Rodar o Ambiente em Modo Hot Reload
+### 2. Script do Prisma Generate
+
+```bash
+yarn prisma:generate
+```
+
+Este comando executa o script configurado no `package.json` do `hubla-backend` para preparar o banco de dados e gerar o cliente do Prisma. O script realiza as seguintes etapas:
+
+1. Aplicar Migrações ao Banco de Dados `npx prisma migrate deploy` Sincroniza as migrações com o banco de dados, criando ou atualizando as tabelas conforme necessário.
+2. Seed do Banco de Dados `yarn prisma:seed` Popula o banco de dados com dados iniciais, úteis para desenvolvimento ou testes.
+3. Gerar o Prisma Client `npx prisma generate` Cria os arquivos necessários para que o Prisma interaja com o banco de dados usando TypeScript.
+
+> Após a execução, o Prisma estará totalmente configurado para uso no projeto, com o banco de dados atualizado e pronto para uso/consultas.
+
+### 3. Rodar o Ambiente (Hot Reload)
 
 Caso precise alterar algum arquivo durante o desenvolvimento e ver as alterações em tempo real:
 
@@ -78,7 +92,9 @@ Caso precise alterar algum arquivo durante o desenvolvimento e ver as alteraçõ
 yarn dev:all
 ```
 
-### 3. Rodar o Ambiente de Forma Mais Rápida (Sem Lentidão)
+### 4. Rodar o Ambiente de Forma Mais Rápida
+
+#### (Mais rápido)
 
 ```bash
 # Primeiro terminal: Executar o backend

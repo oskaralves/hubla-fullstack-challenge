@@ -5,5 +5,7 @@
   "VALUE": "Value",
   "SELLER": "Producer/Affiliate",
   "NAME": "Name",
-  "DESCRIPTION": "Description"
+  "DESCRIPTION": "Description",
+  "BALANCE": "Balance",
+  "LAST_TRANSACTION_DATE": "Last transaction"
 }

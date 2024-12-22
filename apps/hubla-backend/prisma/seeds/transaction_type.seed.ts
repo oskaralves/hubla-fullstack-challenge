@@ -25,7 +25,7 @@ export const runTransactionTypeSeed = () =>
       types.forEach((type) => {
         seedConsole(
           context,
-          `ID: ${type.id} | ${type.description} (${type.nature}, ${type.nature === 'INCOME' ? '+' : '-'})`,
+          `ID: ${type.id} | ${type.description} (${type.nature}, ${type.nature === 'INPUT' ? '+' : '-'})`,
         );
       });
       seedConsole(context, `Seed completed.`);

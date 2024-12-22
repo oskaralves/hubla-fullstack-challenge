@@ -9,8 +9,8 @@ model TransactionType {
 }
 
 enum TransactionNatureEnum {
-    INCOME // Entrada
-    EXPENSE // Saída
+    INPUT // Entrada
+    OUTPUT // Saída
 
     @@schema("public")
 }

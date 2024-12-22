@@ -5,9 +5,7 @@ const nextConfig = {
       fullUrl: true,
     },
   },
-  images: {
-    // remotePatterns: [{ hostname: 'storage.googleapis.com' }],
-  },
+  images: {},
   experimental: {
     serverActions: {
       bodySizeLimit: "10mb",

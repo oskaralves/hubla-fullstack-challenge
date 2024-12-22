@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
-import { TransactionModule } from './transaction/transaction.module';
 import { TransactionTypeModule } from './transaction-type/transaction-type.module';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [

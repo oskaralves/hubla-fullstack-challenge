@@ -4,21 +4,21 @@ export const transactionTypes: Prisma.TransactionTypeCreateManyInput[] = [
   {
     id: 1,
     description: 'Venda produtor',
-    nature: 'INCOME',
+    nature: 'INPUT',
   },
   {
     id: 2,
     description: 'Venda afiliado',
-    nature: 'INCOME',
+    nature: 'INPUT',
   },
   {
     id: 3,
     description: 'Comissão paga',
-    nature: 'EXPENSE',
+    nature: 'OUTPUT',
   },
   {
     id: 4,
     description: 'Comissão recebida',
-    nature: 'INCOME',
+    nature: 'INPUT',
   },
 ];

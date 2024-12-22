@@ -116,7 +116,7 @@ export const TransactionFileForm = () => {
         });
       }
 
-      form.reset();
+      form.reset({ file: null });
       router.refresh();
     });
   };

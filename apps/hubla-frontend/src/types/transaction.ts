@@ -16,3 +16,9 @@ export type TransactionsBulk = {
   successMessages: string[];
   errorMessages: string[];
 };
+
+export type TransactionSellerBalance = {
+  seller: string;
+  balance: number;
+  lastTransactionDate: Date;
+};

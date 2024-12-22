@@ -3,5 +3,5 @@ import { ResponseException } from "./exception";
 export type TransactionType = {
   id: number;
   description: string;
-  nature: "INCOME" | "EXPENSE";
+  nature: "INPUT" | "OUTPUT";
 } & ResponseException;

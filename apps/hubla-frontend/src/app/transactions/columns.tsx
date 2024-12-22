@@ -30,7 +30,7 @@ export const useTransactionListColumns = () => {
         ),
       },
       cell: ({ row }) =>
-        row?.original?.transactionType.nature === "INCOME" ? (
+        row?.original?.transactionType.nature === "INPUT" ? (
           <PlusSquareIcon className="size-5 text-emerald-500" />
         ) : (
           <RemoveSquareIcon className="size-5 text-red-500" />

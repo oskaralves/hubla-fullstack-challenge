@@ -4,14 +4,13 @@ import { findAllAction } from "@/actions/find-all.action";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { DEFAULT_ITEMS_PER_PAGE } from "@/constants";
 import { SearchParams } from "@/types/common";
-import { Transaction } from "@/types/transaction";
-import { TransactionType } from "@/types/transaction-type";
-import { TransactionsTable } from "./transactions-table";
+import { TransactionSellerBalance } from "@/types/transaction";
+import { TransactionSellerBalancesTable } from "./transaction-seller-balances-table";
 
 type TransactionListProps = {
   searchParams?: SearchParams;
 };
-export const TransactionList = async ({
+export const TransactionSellerBalanceList = async ({
   searchParams,
 }: TransactionListProps) => {
   const {
@@ -23,8 +22,8 @@ export const TransactionList = async ({
     ...othersParams
   } = searchParams || {};
 
-  const transactionList = await findAllAction<Transaction>({
-    endpoint: "/transactions",
+  const sellerBalanceList = await findAllAction<TransactionSellerBalance>({
+    endpoint: "/transactions/seller-balances",
     searchParam: search,
     pageParam: page,
     perPageParam: per_page,
@@ -33,27 +32,16 @@ export const TransactionList = async ({
     ...othersParams,
   });
 
-  const transactionTypeList = await findAllAction<TransactionType>({
-    endpoint: "/transaction-types",
-    perPageParam: "1000",
-    options: { cache: "force-cache" },
-  });
-
-  if ("error" in { ...transactionList, ...transactionTypeList }) {
+  if ("error" in sellerBalanceList) {
     return (
       <Alert variant="destructive">
         <TriangleAlertIcon />
-        <AlertTitle>
-          {transactionList.error?.message || transactionTypeList.error?.message}
-        </AlertTitle>
+        <AlertTitle>{sellerBalanceList.error?.message}</AlertTitle>
       </Alert>
     );
   }
 
   return (
-    <TransactionsTable
-      transactionList={transactionList}
-      transactionTypeList={transactionTypeList}
-    />
+    <TransactionSellerBalancesTable sellerBalanceList={sellerBalanceList} />
   );
 };

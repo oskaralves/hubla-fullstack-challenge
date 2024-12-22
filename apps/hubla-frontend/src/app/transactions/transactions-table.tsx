@@ -11,11 +11,11 @@ import { TransactionType } from "@/types/transaction-type";
 import { useTransactionListColumns } from "./columns";
 
 type TransactionsTableProps = {
-  userList?: PagedResponse<Transaction>;
+  transactionList?: PagedResponse<Transaction>;
   transactionTypeList?: PagedResponse<TransactionType>;
 };
 export const TransactionsTable = ({
-  userList,
+  transactionList,
   transactionTypeList,
 }: TransactionsTableProps) => {
   const {
@@ -38,7 +38,7 @@ export const TransactionsTable = ({
 
   return (
     <ListReactTable
-      data={userList}
+      data={transactionList}
       columns={columns}
       filterableColumns={filterableColumns}
       filters={filters}

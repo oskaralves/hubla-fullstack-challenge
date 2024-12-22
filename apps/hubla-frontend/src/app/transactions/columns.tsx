@@ -139,37 +139,6 @@ export const useTransactionListColumns = () => {
         </div>
       ),
     },
-    // {
-    //   accessorKey: 'roles',
-    //   size: 100,
-    //   meta: {
-    //     title: ROLE,
-    //     loading: (
-    //       <Skeleton className="h-6 w-24 rounded bg-slate-300/40 dark:bg-slate-300/20" />
-    //     ),
-    //   },
-    //   header: ({ column }) => (
-    //     <DataTableColumnHeader column={column} title={ROLE} />
-    //   ),
-    //   cell: ({ row }) => {
-    //     return (
-    //       <div>
-    //         {row?.original?.roles.map((userRole) => (
-    //           <Badge
-    //             key={`badge-${userRole.role}`}
-    //             variant="outline"
-    //             className="mb-0.5 mr-0.5"
-    //           >
-    //             <span className="truncate font-medium">
-    //               {TRANSACTION_TYPE_NATURE_ENUM?.[userRole.role] ||
-    //                 'Não identificado'}
-    //             </span>
-    //           </Badge>
-    //         ))}
-    //       </div>
-    //     );
-    //   },
-    // },
   ];
   return columns;
 };

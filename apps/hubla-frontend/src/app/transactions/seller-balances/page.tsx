@@ -4,11 +4,11 @@ import { getDictionary } from "@/dictionaries";
 import { ADMIN_TRANSACTION_IMPORT_URL } from "@/navigation/urls";
 import { SearchParams } from "@/types/common";
 import { getLocale } from "@/utils/locale";
-import { DocumentAttachmentIcon, TransactionIcon } from "hugeicons-react";
+import { DocumentAttachmentIcon, ManagerIcon } from "hugeicons-react";
 import Link from "next/link";
 import { Suspense } from "react";
-import { TransactionTableSkeleton } from "./skeleton";
-import { TransactionList } from "./transaction-list";
+import { TransactionSellerBalanceTableSkeleton } from "./skeleton";
+import { TransactionSellerBalanceList } from "./transaction-seller-balance-list";
 
 type TransactionsPageProps = {
   searchParams?: SearchParams;
@@ -17,14 +17,12 @@ type TransactionsPageProps = {
 const TransactionsPage = async ({ searchParams }: TransactionsPageProps) => {
   const locale = await getLocale();
 
-  const { TRANSACTIONS, IMPORT } = getDictionary(locale, "general");
+  const { IMPORT, TRANSACTIONS } = getDictionary(locale, "general");
+  const { BALANCES } = getDictionary(locale, "navigation");
 
   return (
     <div className="space-y-4">
-      <PageHeader
-        icon={<TransactionIcon className="size-5" />}
-        title={TRANSACTIONS}
-      >
+      <PageHeader icon={<ManagerIcon className="size-5" />} title={BALANCES}>
         <Link href={ADMIN_TRANSACTION_IMPORT_URL}>
           <Button
             className="w-10 px-2 md:w-auto md:px-4"
@@ -35,8 +33,8 @@ const TransactionsPage = async ({ searchParams }: TransactionsPageProps) => {
           </Button>
         </Link>
       </PageHeader>
-      <Suspense fallback={<TransactionTableSkeleton />}>
-        <TransactionList searchParams={searchParams} />
+      <Suspense fallback={<TransactionSellerBalanceTableSkeleton />}>
+        <TransactionSellerBalanceList searchParams={searchParams} />
       </Suspense>
     </div>
   );

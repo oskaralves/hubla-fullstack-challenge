@@ -1,3 +1,5 @@
+<img src="docs/logo-hubla.webp" alt="Hubla Backend" width="160px" />
+
 # Hubla - Desafio Programação Full Stack v1.2.0
 
 ## Sumário
@@ -36,7 +38,7 @@ Este repositório é um monorepo que contém dois projetos principais, projetado
 
 | Backend | Frontend |
 | --- | --- |
-| <img src="docs/hubla-backend-swagger.png" alt="Hubla Backend" widht="50%" /> | <img src="docs/hubla-frontend.png" alt="Hubla Frontend" widht="50%" /> |
+| <img src="docs/hubla-backend-swagger.png" alt="Hubla Backend" /> | <img src="docs/hubla-frontend.png" alt="Hubla Frontend" /> |
 
 Este documento detalha as instruções para configurar e executar o ambiente tanto em modo de desenvolvimento quanto em modo de produção, além de fornecer descrições sobre comandos essenciais do Prisma e o acesso à documentação Swagger para facilitar a integração e uso da API.
 

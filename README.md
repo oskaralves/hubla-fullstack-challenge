@@ -565,7 +565,7 @@ Essa estrutura é bem organizada e segue boas práticas para projetos modernos c
 
 ## **Backlog de Atividades**
 
-### :check: **Atividades Realizadas**
+### ✅ **Atividades Realizadas**
 
 #### **Backend**
 

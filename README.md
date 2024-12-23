@@ -1,5 +1,34 @@
 # Hubla - Desafio Programação Full Stack v1.2.0
 
+## Sumário
+
+- [Introdução](#introdução)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+- [Requisitos](#requisitos)
+- [Executar o Ambiente de Desenvolvimento](#executar-o-ambiente-de-desenvolvimento)
+- [Executar Local o Ambiente de Produção](#executar-local-o-ambiente-de-produção)
+- [Autenticação](#autenticação)
+- [Estrutura do Repositório](#estrutura-do-repositório)
+- [Backend](#backend-1)
+  - [Prisma Schema](#prisma-schema)
+  - [Swagger Documentation](#swagger-documentation)
+  - [Comandos do Prisma](#comandos-do-prisma)
+  - [Testes](#testes)
+- [Frontend](#frontend-1)
+  - [SSR e Client Components](#ssr-e-client-components)
+  - [Dicionários Multilíngues](#dicionários-multilíngues)
+  - [Configuração de Temas (Light/Dark)](#configuração-de-temas-lightdark)
+  - [Estrutura do Repositório (Frontend)](#estrutura-do-repositório-frontend)
+- [Backlog de Atividades](#backlog-de-atividades)
+  - [Atividades Realizadas](#atividades-realizadas)
+  - [Atividades Desejáveis (pendentes)](#atividades-desejáveis-pendentes)
+
+---
+
+## Introdução
+
 Este repositório é um monorepo que contém dois projetos principais, projetados para oferecer uma solução completa e robusta:
 
 1. **Hubla Backend:** Uma poderosa API desenvolvida com NestJS, Prisma, PostgreSQL e Redis proporcionando uma arquitetura escalável, modular e segura para gerenciar transações e dados essenciais.
@@ -10,6 +39,27 @@ Este repositório é um monorepo que contém dois projetos principais, projetado
 | <img src="docs/hubla-backend-swagger.png" alt="Hubla Backend" widht="50%" /> | <img src="docs/hubla-frontend.png" alt="Hubla Frontend" widht="50%" /> |
 
 Este documento detalha as instruções para configurar e executar o ambiente tanto em modo de desenvolvimento quanto em modo de produção, além de fornecer descrições sobre comandos essenciais do Prisma e o acesso à documentação Swagger para facilitar a integração e uso da API.
+
+---
+
+## Autenticação
+
+Para realizar testes na API, disponibilizamos duas formas principais de interação:
+
+### 1. Arquivos Postman
+
+Fornecemos arquivos de configuração para facilitar o uso do Postman, permitindo que você importe as rotas diretamente em sua workspace.
+
+| Arquivo | Link de Download |
+| --- | --- |
+| **Collection - Hubla Full Stack - v1.2.0** | [Baixar Collection](docs/postman/hubla-dev.postman_environment.json) |
+| **Environment - HublaDev** | [Baixar Environment](docs/postman/hubla-dev.postman_environment.json) |
+
+### 2. Swagger
+
+Além disso, a API possui suporte ao **Swagger**, permitindo que você visualize e interaja diretamente com as rotas através de uma interface web amigável.
+
+---
 
 ## **Tecnologias Utilizadas**
 
@@ -499,11 +549,11 @@ hubla-frontend/
 
 - Configuração e lógica para gerenciar temas claros e escuros.
 
-### types/
+#### types/
 
 - Tipos TypeScript globais e interfaces usadas em todo o projeto.
 
-### utils/
+#### utils/
 
 - Funções utilitárias gerais, como formatadores, manipuladores de strings, etc.
 

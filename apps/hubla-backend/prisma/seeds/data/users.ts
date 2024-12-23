@@ -12,7 +12,7 @@ export const users: Partial<Prisma.UserCreateManyInput>[] = [
     id: '53f5b5f6-a783-4a3f-9298-1c26b5963255',
     email: 'oscar.alves.affiliated@hub.la',
     emailVerified: new Date(),
-    name: 'Oscar Filiado',
+    name: 'Oscar Afiliado',
     username: 'oscar-affiliated',
   },
   {

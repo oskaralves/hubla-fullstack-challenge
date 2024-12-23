@@ -377,7 +377,7 @@ Implementado suporte para os idiomas pt-BR e en-US. Os dicionários utilizam arq
 
 Exemplo de configuração:
 
-```json
+```js
 // /dictionaries/pt-BR/general.json
 {
   "SUBMIT": "Enviar",

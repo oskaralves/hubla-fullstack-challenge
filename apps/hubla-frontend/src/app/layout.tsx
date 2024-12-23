@@ -1,4 +1,4 @@
-import { getSidebarExtendedAction } from "@/actions/sidebar-extended.action";
+import { auth } from "@/auth";
 import { Header } from "@/components/layout/Header";
 
 import { Sidebar } from "@/components/layout/Sidebar";
@@ -16,6 +16,7 @@ import { getLocale } from "@/utils/locale";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
+import { getSidebarExtendedAction } from "../actions/sidebar-extended.action";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -33,13 +34,7 @@ export default async function RootLayout({
   const locale = await getLocale();
   const dictionary = getDictionary<any>(locale);
 
-  const session = {
-    user: {
-      id: "1a2b3c4d-5678-90ef-1234-567890abcdef",
-      name: "Oscar Alves",
-      email: "oscar.alves@hub.la",
-    },
-  };
+  const session = await auth();
 
   const defaultSidebarExpanded = await getSidebarExtendedAction();
   return (
@@ -55,10 +50,11 @@ export default async function RootLayout({
             <ThemeProvider>
               <TooltipProvider>
                 {!!session?.user?.id ? (
-                  <main className="font-default text-background-foreground grid h-screen grid-cols-1 grid-rows-[auto_1fr] overflow-hidden md:grid-cols-[auto_1fr]">
+                  <main className="font-default grid h-screen grid-cols-1 grid-rows-[auto_1fr] overflow-hidden text-foreground md:grid-cols-[auto_1fr]">
                     <AppContextProvider
                       defaultSidebarExpanded={defaultSidebarExpanded}
                     >
+                      {/* <AuthContextProvider> */}
                       <Header user={session.user} />
                       <Sidebar user={session.user}>
                         <UserSession id="sidebar" user={session.user} />
@@ -67,6 +63,7 @@ export default async function RootLayout({
                       <div className="max-h-[calc(100vh-68px)] overflow-auto rounded-tl-3xl border-l border-t border-border bg-neutral-100 text-foreground dark:bg-neutral-900">
                         <div className="min-h-full p-6">{children}</div>
                       </div>
+                      {/* </AuthContextProvider> */}
                     </AppContextProvider>
                   </main>
                 ) : (

@@ -3,12 +3,11 @@
 Este repositório é um monorepo que contém dois projetos principais, projetados para oferecer uma solução completa e robusta:
 
 1. **Hubla Backend:** Uma poderosa API desenvolvida com NestJS, Prisma, e PostgreSQL, proporcionando uma arquitetura escalável, modular e segura para gerenciar transações e dados essenciais.
+2. **Hubla Frontend:** Uma interface moderna e dinâmica construída com React,Next.js, Tailwind CSS, e Shadcn UI
 
-![hubla-backend](hubla-backend-swagger.png)
-
-1. **Hubla Frontend:** Uma interface moderna e dinâmica construída com React,Next.js, Tailwind CSS, e Shadcn UI
-
-![hubla-frontend](hubla-frontend.png)
+| Backend | Frontend |
+| --- | --- |
+| <img src="hubla-backend-swagger.png" alt="Hubla Backend" widht="50%" /> | <img src="hubla-frontend.png" alt="Hubla Frontend" widht="50%" /> |
 
 Este documento detalha as instruções para configurar e executar o ambiente tanto em modo de desenvolvimento quanto em modo de produção, além de fornecer descrições sobre comandos essenciais do Prisma e o acesso à documentação Swagger para facilitar a integração e uso da API.
 
@@ -18,12 +17,13 @@ Este documento detalha as instruções para configurar e executar o ambiente tan
 
 | Logo | Nome | Descrição |
 | --- | --- | --- |
-| <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="NestJS" width="56" height="56"> | Node.js | Framework para criação de APIs robustas |
-| <img src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/519bfaf3-c242-431e-a269-876979f05574" alt="NestJS" width="56" height="56"> | Nest.js | Framework para criação de APIs robustas |
-| <img src="https://img.icons8.com/?size=512&id=zJh5Gyrd6ZKu&format=png" alt="Prisma" width="56" height="56"> | Prisma | ORM para gerenciamento de banco de dados |
-| <img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL" width="56" height="56"> | PostgreSQL | Banco de dados relacional |
-| <img src="https://user-images.githubusercontent.com/25181517/187955005-f4ca6f1a-e727-497b-b81b-93fb9726268e.png" alt="Jest" width="56" height="56"> | Jest | Bilbioteca para testes |
-| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56" height="56"> | Docker | Contêineres para desenvolvimento e deploy |
+| <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="NestJS" width="56"> | Node.js | Framework para criação de APIs robustas |
+| <img src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/519bfaf3-c242-431e-a269-876979f05574" alt="NestJS" width="56"> | Nest.js | Framework para criação de APIs robustas |
+| <img src="https://img.icons8.com/?size=512&id=zJh5Gyrd6ZKu&format=png" alt="Prisma" width="56"> | Prisma | ORM para gerenciamento de banco de dados |
+| <img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL" width="56"> | PostgreSQL | Banco de dados relacional |
+| <img src="https://user-images.githubusercontent.com/25181517/182884894-d3fa6ee0-f2b4-4960-9961-64740f533f2a.png" alt="PostgreSQL" width="56"> | Redis | Cache rápido e banco de dados em memória |
+| <img src="https://user-images.githubusercontent.com/25181517/187955005-f4ca6f1a-e727-497b-b81b-93fb9726268e.png" alt="Jest" width="56"> | Jest | Bilbioteca para testes |
+| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56"> | Docker | Contêineres para desenvolvimento e deploy |
 
 ---
 
@@ -31,12 +31,13 @@ Este documento detalha as instruções para configurar e executar o ambiente tan
 
 | Logo | Nome | Descrição |
 | --- | --- | --- |
-| <img src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/5f8c622c-c217-4649-b0a9-7e0ee24bd704" alt="Next.js" width="56" height="56"> | Next.js | Framework para SSR e SSG |
-| <img src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" width="56" height="56"> | React | Biblioteca para construção de interfaces |
-| <img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind CSS" width="56" height="56"> | Tailwind CSS | Framework de estilização utilitária |
-| <img src="https://github.com/user-attachments/assets/e4bd419a-2a4a-459a-ba9a-d3324e693c4d" alt="Shadcn UI" width="56" height="56"> | Shadcn UI | Componentes de UI modernos |
-| <img src="https://user-images.githubusercontent.com/25181517/187955005-f4ca6f1a-e727-497b-b81b-93fb9726268e.png" alt="Jest" width="56" height="56"> | Jest | Bilbioteca para testes |
-| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56" height="56"> | Docker | Contêineres para desenvolvimento e deploy |
+| <img src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/5f8c622c-c217-4649-b0a9-7e0ee24bd704" alt="Next.js" width="56"> | Next.js | Framework para SSR e SSG |
+| <img src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" width="56"> | React | Biblioteca para construção de interfaces |
+| <img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind CSS" width="56"> | Tailwind CSS | Framework de estilização utilitária |
+| <img src="https://github.com/user-attachments/assets/e4bd419a-2a4a-459a-ba9a-d3324e693c4d" alt="Shadcn UI" width="56"> | Shadcn UI | Componentes de UI modernos |
+| <img src="https://user-images.githubusercontent.com/25181517/187955005-f4ca6f1a-e727-497b-b81b-93fb9726268e.png" alt="Jest" width="56"> | Jest | Bilbioteca para testes |
+| <img src="https://authjs.dev/img/etc/logo-sm.webp" alt="Docker" width="56"> | Auth.js | Authentication for the Web |
+| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56"> | Docker | Contêineres para desenvolvimento e deploy |
 
 ---
 
@@ -46,11 +47,11 @@ Antes de iniciar, certifique-se de que você tem os seguintes softwares instalad
 
 | Logo | Nome | Link |
 | --- | --- | --- |
-| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56" height="56"> | Docker | [Instalar Docker](https://www.docker.com/) |
-| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker Compose" width="56" height="56"> | Docker Compose | [Instalar Docker Compose](https://docs.docker.com/compose/) |
-| <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" width="56" height="56"> | Node.js | [Instalar Node.js](https://nodejs.org/) (versão 18 ou superior) |
-| <img src="https://user-images.githubusercontent.com/25181517/183049794-a3dfaddd-22ee-4ffe-b0b4-549ccd4879f9.png" alt="Yarn" width="56" height="56"> | Yarn | [Instalar Yarn](https://yarnpkg.com/) |
-| <img src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" alt="Yarn" width="56" height="56"> | Turborepo | [Instalar Turborepo](https://turbo.build/) |
+| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56"> | Docker | [Instalar Docker](https://www.docker.com/) |
+| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker Compose" width="56"> | Docker Compose | [Instalar Docker Compose](https://docs.docker.com/compose/) |
+| <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" width="56"> | Node.js | [Instalar Node.js](https://nodejs.org/) (versão 18 ou superior) |
+| <img src="https://user-images.githubusercontent.com/25181517/183049794-a3dfaddd-22ee-4ffe-b0b4-549ccd4879f9.png" alt="Yarn" width="56"> | Yarn | [Instalar Yarn](https://yarnpkg.com/) |
+| <img src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" alt="Yarn" width="56"> | Turborepo | [Instalar Turborepo](https://turbo.build/) |
 
 ---
 

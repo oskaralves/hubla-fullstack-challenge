@@ -27,8 +27,8 @@ services:
     container_name: hubla-pgadmin
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@hub.la}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-Abcd123!}
+      PGADMIN_DEFAULT_EMAIL: admin@hub.la
+      PGADMIN_DEFAULT_PASSWORD: Abcd123!
     ports:
       - "16543:80"
     depends_on:
@@ -41,11 +41,13 @@ services:
     container_name: hubla-redis
     restart: always
     environment:
-      REDIS_HOST: ${REDIS_HOST:-localhost}
-      REDIS_PORT: ${REDIS_PORT:-6379}
-      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis123}
+      REDIS_HOST: hubla-redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: Redis123
     ports:
       - "6379:6379"
+    volumes:
+      - redis-data:/data
     networks:
       - hubla-network
 
@@ -60,8 +62,12 @@ services:
       - ./apps/hubla-backend/.env
     environment:
       DATABASE_URL: "postgresql://postgres:Abcd123!@hubla-postgres:5432/hubla?schema=public"
+      REDIS_HOST: hubla-redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: redis123
     depends_on:
       - postgres
+      - redis
     networks:
       - hubla-network
 
@@ -83,6 +89,8 @@ services:
 volumes:
   postgres:
     name: hubla-postgres
+  redis-data:
+    name: hubla-redis-data
 
 networks:
   hubla-network:

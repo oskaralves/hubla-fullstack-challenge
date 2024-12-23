@@ -13,13 +13,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAppContext } from "@/contexts/AppContext";
 import { cn } from "@/lib/utils";
-import { SessionUser } from "@/types/auth";
 import { ChevronDownIcon, MoreVerticalIcon } from "lucide-react";
+import { Session } from "next-auth";
 import { useTheme } from "next-themes";
+import { signoutAction } from "../../../actions/auth/signout-action";
 
 type UserSessionProps = {
   id: string;
-  user: SessionUser;
+  user: Session["user"];
   isHeader?: boolean;
 };
 
@@ -93,11 +94,7 @@ export const UserSession = ({ id, user, isHeader }: UserSessionProps) => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                console.log("Sair");
-              }}
-            >
+            <DropdownMenuItem onClick={async () => signoutAction()}>
               Sair
             </DropdownMenuItem>
           </DropdownMenuContent>

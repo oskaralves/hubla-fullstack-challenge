@@ -24,7 +24,6 @@ import { z } from "zod";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string>();
-  // const [success, setSuccess] = useState<string>();
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -37,11 +36,9 @@ export const LoginForm = () => {
 
   const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
     setError("");
-    // setSuccess('');
     startTransition(() => {
       accessAction(values).then((data) => {
         setError(data?.error);
-        // setSuccess(data?.success);
       });
     });
   };

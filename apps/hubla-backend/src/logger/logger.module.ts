@@ -21,11 +21,6 @@ import {
             customProps: (req) => ({
               requestCorrelationId: req[REQUEST_ID_HEADER],
             }),
-            // autoLogging: false,
-            // serializers: {
-            //   req: () => undefined,
-            //   res: () => undefined,
-            // },
           },
         };
       },

@@ -65,7 +65,6 @@ export const {
           );
 
           if (!res.ok) {
-            // credentials are invalid
             return null;
           }
 
@@ -113,11 +112,9 @@ export const {
 
       return session;
     },
-    async signIn({ user, account }) {
+    async signIn({ account }) {
       if (account?.provider !== "credentials") return true;
       if (account?.provider === "credentials") {
-        // const existingUser = await getUserById(user.id);
-        // if(!existingUser)
       }
       return true;
     },

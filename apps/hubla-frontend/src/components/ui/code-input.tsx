@@ -57,13 +57,13 @@ const CodeInput: React.FC<InputCodeProps> = ({
         }
       });
       inputRefs.current[digits - 1]?.select();
-      onChange?.(pasteData.slice(0, digits)); // Ensure only `digits` number of characters are passed
+      onChange?.(pasteData.slice(0, digits));
       e.preventDefault();
     }
   };
 
   useEffect(() => {
-    const limitedValue = value.slice(0, digits); // Ensure the value is limited to the number of digits
+    const limitedValue = value.slice(0, digits);
     limitedValue.split("").forEach((char, index) => {
       if (inputRefs.current[index]) {
         inputRefs.current[index]!.value = char;

@@ -1,6 +1,5 @@
 import { Locale } from "@/contexts/language-context";
 
-// Importa os arquivos do pt-BR
 import enum_ptBR from "./pt-BR/enum.json";
 import feedback_ptBR from "./pt-BR/feedback.json";
 import field_ptBR from "./pt-BR/field.json";
@@ -9,7 +8,6 @@ import metadata_ptBR from "./pt-BR/metadata.json";
 import navigation_ptBR from "./pt-BR/navigation.json";
 import validation_ptBR from "./pt-BR/validation.json";
 
-// Importa os arquivos do en-US
 import enum_enUS from "./en-US/enum.json";
 import feedback_enUS from "./en-US/feedback.json";
 import field_enUS from "./en-US/field.json";
@@ -18,7 +16,6 @@ import metadata_enUS from "./en-US/metadata.json";
 import navigation_enUS from "./en-US/navigation.json";
 import validation_enUS from "./en-US/validation.json";
 
-// Define o tipo de cada categoria com base nos JSONs importados
 type GeneralType = typeof general_ptBR;
 type FieldType = typeof field_ptBR;
 type ValidationType = typeof validation_ptBR;

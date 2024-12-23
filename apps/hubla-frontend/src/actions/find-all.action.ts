@@ -21,7 +21,6 @@ export const findAllAction = async <T = any>({
       withCredentials: true,
       ...options,
     });
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
 
     if (res.ok) {
       return (await res.json()) as PagedResponse<T>;

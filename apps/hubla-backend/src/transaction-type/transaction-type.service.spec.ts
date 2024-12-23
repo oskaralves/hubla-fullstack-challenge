@@ -77,7 +77,7 @@ describe('TransactionTypeService', () => {
           next: null,
         },
         meta: {
-          timestamp: expect.any(Date), // Permite comparação dinâmica para a data
+          timestamp: expect.any(Date),
         },
         rows: mockRows.map((row) => plainToClass(TransactionTypeDto, row)),
       });

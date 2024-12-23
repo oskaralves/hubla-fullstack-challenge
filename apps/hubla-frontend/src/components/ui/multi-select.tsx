@@ -78,7 +78,7 @@ const MultiSelector = ({
     [value, onValueChange]
   );
 
-  // TODO : change from else if use to switch case statement
+  // @todo: change from else if use to switch case statement
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {

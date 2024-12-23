@@ -42,10 +42,8 @@ export const LanguageProvider = ({
         body: JSON.stringify({ locale: newLocale }),
       });
 
-      // Atualiza o estado do idioma
       setLocale(newLocale);
 
-      // Usando o router.replace para forçar o re-render sem recarregar a página
       router.refresh();
     });
   };

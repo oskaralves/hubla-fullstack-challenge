@@ -1,4 +1,3 @@
-// NestJS
 import {
   CanActivate,
   ExecutionContext,

@@ -40,7 +40,7 @@ export class TransactionService {
     for (const [index, line] of lines.entries()) {
       const lineNumber = index + 1;
 
-      if (!line) continue; // Ignora linhas vazias
+      if (!line) continue;
 
       try {
         const transaction = this.parseTransactionLine(line);

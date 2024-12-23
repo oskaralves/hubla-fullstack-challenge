@@ -4,7 +4,6 @@ import { translateFormatter } from "@/dictionaries/utils";
 import { User } from "@/types/user";
 import { z } from "zod";
 
-// Enums
 const UserRoleEnum = z.enum(["ADMIN", "AFFILIATE", "PRODUCER"]);
 const UserGenderEnum = z.enum([
   "MALE",
@@ -17,7 +16,7 @@ const UserGenderEnum = z.enum([
   "OTHER",
   "PREFER_NOT_TO_SAY",
 ]);
-// CreateUser
+
 const createUserSchema = (
   locale: Locale = "pt-BR",
   isEdition: boolean = false
@@ -91,7 +90,7 @@ const createUserSchema = (
         (value) => {
           if (value) {
             const date = new Date(value);
-            return !isNaN(date.getTime()) && date <= new Date(); // Data válida e não no futuro
+            return !isNaN(date.getTime()) && date <= new Date();
           }
         },
         {

@@ -34,8 +34,6 @@ export function DataTableColumnHeader<TData, TValue>({
   const {
     general: { SORT_BY_COLUMN, ASCENDING, DESCENDING, RESET, HIDE },
   } = useDictionary();
-  // const locale = await getLocale();
-  // const {} = getDictionary(locale, 'general');
   if (!column.getCanSort()) {
     return <div className={cn(className)}>{title}</div>;
   }

@@ -86,26 +86,28 @@ Este comando executa o script configurado no `package.json` do `hubla-backend` p
 
 > Após a execução, o Prisma estará totalmente configurado para uso no projeto, com o banco de dados atualizado e pronto para uso/consultas.
 
-### 3. Rodar o Ambiente (Hot Reload)
+### 3. Rodar os apps local (Mais rápido)
+
+####
+
+```bash
+# Primeiro terminal: Executar o backend
+cd apps/hubla-backend/
+yarn start:dev
+```
+
+```bash
+# Segundo terminal: Construir e executar o frontend
+cd apps/hubla-frontend/
+yarn build && yarn start
+```
+
+### 4. Rodar os apps (com Hot Reload)
 
 Caso precise alterar algum arquivo durante o desenvolvimento e ver as alterações em tempo real:
 
 ```bash
 yarn dev:all
-```
-
-### 4. Rodar o Ambiente de Forma Mais Rápida
-
-#### (Mais rápido)
-
-```bash
-# Primeiro terminal: Executar o backend
-cd apps/hubla-backend/ && yarn start:dev
-```
-
-```bash
-# Segundo terminal: Construir e executar o frontend
-cd apps/hubla-frontend/ && yarn build && yarn start
 ```
 
 #### **:rocket: Agora** Acesse os links:
@@ -154,11 +156,16 @@ Fornecemos arquivos de configuração para facilitar o uso do Postman, permitind
 | **Collection - Hubla Full Stack - v1.2.0** | [Baixar Collection](docs/postman/hubla-dev.postman_environment.json) |
 | **Environment - HublaDev** | [Baixar Environment](docs/postman/hubla-dev.postman_environment.json) |
 
+```markdown
+### Admin
+
+- email: oscar.alves@hub.la
+- password: Abcd123!
+```
+
 ### 2. Swagger
 
 Além disso, a API possui suporte ao **Swagger**, permitindo que você visualize e interaja diretamente com as rotas através de uma interface web amigável.
-
-> **Dica**: Use o Swagger para realizar testes diretamente, sem a necessidade de ferramentas externas.
 
 ## **Estrutura do Repositório**
 

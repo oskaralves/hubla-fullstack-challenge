@@ -79,9 +79,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      NEXT_PUBLIC_BASE_URL: http://hubla-frontend:3000
+      NEXT_PUBLIC_BASE_URL: http://localhost:3000
       NEXT_PUBLIC_API_BASE_URL: http://hubla-backend:3010
-      NEXTAUTH_URL: http://hubla-frontend:3000
+      NEXTAUTH_URL: http://localhost:3000
       NEXTAUTH_TRUST_HOST: true
       NEXTAUTH_SECRET: j1wQWzB6bvA0MAABsbuYR7WqpOyZvIlj4qgV1np3CyA=
     depends_on:

@@ -70,6 +70,7 @@ Este comando utiliza o arquivo `docker-compose.dev.yml` para configurar os segui
 
 - **PostgreSQL**: Banco de dados na porta `5432`.
 - **pgAdmin**: Interface para gerenciar o PostgreSQL, acessível em `http://localhost:16543`.
+- **redis**: Interface para gerenciar cache e dados em memoria, na porta `6379`.
 
 ### 2. Script do Prisma Generate
 

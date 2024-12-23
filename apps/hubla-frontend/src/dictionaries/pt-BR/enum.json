@@ -2,5 +2,21 @@
   "TRANSACTION_TYPE_NATURE_ENUM": {
     "INPUT": "Entrada",
     "OUTPUT": "Saída"
+  },
+  "COMMON_STATUS_ENUM": {
+    "DISABLED": "Inativado",
+    "ENABLED": "Ativado",
+    "REMOVED": "Removido"
+  },
+  "USER_GENDER_ENUM": {
+    "MALE": "Masculino",
+    "FEMALE": "Feminino",
+    "NON_BINARY": "Não binário",
+    "TRANSGENDER": "Transgênero",
+    "GENDER_FLUID": "Gênero fluido",
+    "AGENDER": "Agênero",
+    "BIGENDER": "Bigênero",
+    "OTHER": "Outro",
+    "PREFER_NOT_TO_SAY": "Prefere não dizer"
   }
 }

@@ -2,5 +2,21 @@
   "TRANSACTION_TYPE_NATURE_ENUM": {
     "INPUT": "Income",
     "OUTPUT": "Expense"
+  },
+  "COMMON_STATUS_ENUM": {
+    "DISABLED": "Disabled",
+    "ENABLED": "Enabled",
+    "REMOVED": "Removed"
+  },
+  "USER_GENDER_ENUM": {
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "NON_BINARY": "Non binary",
+    "TRANSGENDER": "Transgender",
+    "GENDER_FLUID": "Gender fluid",
+    "AGENDER": "Agender",
+    "BIGENDER": "Bigender",
+    "OTHER": "Other",
+    "PREFER_NOT_TO_SAY": "Prefer not to say"
   }
 }

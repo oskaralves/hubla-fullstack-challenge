@@ -5,5 +5,9 @@
   "INVALID_FIELD": "O campo :field é inválido.",
   "POSITIVE_VALUE_REQUIRED": "O valor deve ser positivo. [valor] > 0",
   "FILE_REQUIRED": "O arquivo precisa ser um objeto válido do tipo File.",
-  "ONLY_TXT_ALLOWED": "Apenas arquivos com extensão .txt são permitidos."
+  "ONLY_TXT_ALLOWED": "Apenas arquivos com extensão .txt são permitidos.",
+  "FULL_NAME_REQUIRED": "O nome deve conter pelo menos nome e sobrenome.",
+  "USERNAME_INVALID": "O nome de usuário só pode conter letras, números, hífens e sublinhados",
+  "EMAIL_INVALID": "Email inválido",
+  "PASSWORD_WEAK": "Senha muito fraca"
 }

@@ -7,5 +7,8 @@
   "NAME": "Name",
   "DESCRIPTION": "Description",
   "BALANCE": "Balance",
-  "LAST_TRANSACTION_DATE": "Last transaction"
+  "LAST_TRANSACTION_DATE": "Last transaction",
+  "NICKNAME": "Nickname",
+  "NICKNAME_PLACEHOLDER": "What would you like to be called?",
+  "PASSWORD": "Password"
 }

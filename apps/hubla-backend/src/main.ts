@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as bodyParser from 'body-parser';
 import * as fs from 'fs';
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 import * as path from 'path';
 import { AppModule } from './app.module';
 
@@ -13,6 +14,9 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
 
+  // Logger
+  app.useLogger(app.get(Logger));
+  app.useGlobalInterceptors(new LoggerErrorInterceptor());
   app.flushLogs();
 
   // Pipes

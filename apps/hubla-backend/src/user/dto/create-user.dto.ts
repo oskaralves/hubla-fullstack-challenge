@@ -152,12 +152,12 @@ export class CreateUserDto {
   coverImage?: string | null;
 
   @ApiPropertyOptional({
-    example: ['MERCHANT'],
+    example: ['AFFILIATE'],
     description: `Lista de UserRoleEnum para serem vinculados ao usuário.<br />
-      Se não for informado nenhum 'role', o usuário será vinculado ao role CUSTOMER.`,
+      Se não for informado nenhum 'role', o usuário será vinculado ao role AFFILIATE.`,
     nullable: true,
     required: false,
-    default: ['CUSTOMER'],
+    default: ['AFFILIATE'],
   })
   @IsOptional()
   @IsArray()

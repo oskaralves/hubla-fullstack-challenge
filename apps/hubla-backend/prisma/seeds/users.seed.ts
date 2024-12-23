@@ -34,7 +34,7 @@ async function usersSeed() {
     },
   });
 
-  const merchant = await prisma.user.upsert({
+  const producer = await prisma.user.upsert({
     where: { email: users[2].email },
     select: { id: true, name: true, roles: true },
     update: {},
@@ -46,7 +46,7 @@ async function usersSeed() {
     },
   });
 
-  [admin, affiliated, merchant].forEach((user) => {
+  [admin, affiliated, producer].forEach((user) => {
     seedConsole(
       context,
       `${user.id} ${user.name} (${user.roles

@@ -56,14 +56,14 @@ export class AuthService {
     try {
       userFound = await this.findUserByEmailUseCase.execute(email);
     } catch (error) {
-      throw error;
+      throw new UnauthorizedException('Credenciais inválida');
     }
 
     if (!userFound) {
       try {
         userFound = await this.findUserByUsernameUseCase.execute(email);
       } catch (error) {
-        throw error;
+        throw new UnauthorizedException('Credenciais inválida');
       }
     }
 

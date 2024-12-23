@@ -1,0 +1,1732 @@
+{
+	"info": {
+		"_postman_id": "642adf1e-182e-46e4-b530-70d2b86f9cb3",
+		"name": "Hubla - Desafio Full Stack - v1.2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3913923"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "auth/access",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"accessToken\", jsonData?.accessToken || null);",
+									"pm.environment.set(\"refreshToken\", jsonData?.refreshToken || null);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"oscar.alves@hub.la\",\n    \"password\": \"Abcd123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/access",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"access"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"accessToken\", jsonData?.accessToken || null);",
+									"pm.environment.set(\"refreshToken\", jsonData?.refreshToken || null);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{refreshToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/auth/refresh",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/password/forgot",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"osk.alves@gmail.com.br.br\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/password/forgot",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"password",
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/password/reset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"079189\",\n    \"password\": \"Abcd123!!\",\n    \"passwordConfirmation\": \"Abcd123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/password/reset",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/password/forgot/check/:code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/auth/password/forgot/check/857344",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"password",
+								"forgot",
+								"check",
+								"857344"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/signout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"osk.alves@gmail.com\",\n    \"password\":\"Abcd123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/signout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"signout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/email/confirmation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"email\": \"{{email}}\",\n    \"email\": \"shad_barton@yahoo.com\",\n    \"code\": 804805\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/email/confirmation",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"email",
+								"confirmation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/oscaralves/Documents/Workspace/tests/hubla/desafio-programacao-fullstack-1.2.0/sales.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/transactions/bulk",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transactions",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPaged",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if(jsonData?.rows?.[0]?.id){",
+									"  pm.environment.set(\"transactionId\", jsonData?.rows?.[0]?.id || null);",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transactions?skip=0&take=10&sort=value:desc&search=",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "value:desc"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "transactionTypes",
+									"value": "1,2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSellerBalancePaged",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transactions/seller-balances?skip=0&take=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transactions",
+								"seller-balances"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "seller:asc",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transactions/{{transactionId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transactions",
+								"{{transactionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction-types",
+			"item": [
+				{
+					"name": "getPaged",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if(jsonData?.rows?.[0]?.id){",
+									"  pm.environment.set(\"transactionId\", jsonData?.rows?.[0]?.id || null);",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transaction-types?skip=0&take=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction-types"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Full",
+									"disabled": true
+								},
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "images",
+					"item": [
+						{
+							"name": "uploadAvatar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"base64Image\": \"{{avatarBase64}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/avatar",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"avatar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteAvatar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/avatar",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"avatar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadCover",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"base64Image\": \"{{avatarBase64}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/cover",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"cover"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCover",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/cover",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"cover"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "addresses",
+					"item": [
+						{
+							"name": "createAddress",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"description\": \"Tia Neide\",\n    \"line1\": \"Av. Pastor Luther King\",\n    \"line2\": \"Casa B\",\n     \"zipcode\": \"20765-000\",\n    \"neighborhood\": \"Del Castilho\",\n    \"city\": \"Rio de Janeiro\",\n    \"state\": \"Rio de Janeiro\",\n    \"country\": \"Brasil\",\n    \"countryCode\": \"BR\",\n    \"reference\": \"Em frente ao Colégio XYZ\",\n    \"latitude\": -22.970722,\n    \"longitude\": -43.182365,\n    \"type\": \"WORK\",\n    \"isDefault\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/addresses",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateAddress",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"40dca031-8b5b-4af5-842f-b21b99bdcab4\",\n    \"id\": \"22027ec9-ac5a-41e4-8a29-7ea18f7bb049\",\n    \"description\": \"Casa do meu pai\",\n    \"line1\": \"Rua Guerima\",\n    \"number\": \"432\",\n    \"line2\": \"Casa B\",\n    \"zipcode\": \"21210-200\",\n    \"neighborhood\": \"Penha Circular\",\n    \"city\": \"Rio de Janeiro\",\n    \"state\": \"RJ\",\n    \"country\": \"Brasil\",\n    \"countryCode\": \"BRL\",\n    \"reference\": \"\",\n    \"latitude\": null,\n    \"longitude\": null,\n    \"type\": \"WORK\",\n    \"isDefault\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/addresses/{{addressId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"addresses",
+										"{{addressId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findAllAddresses",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/addresses",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteAddress",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/addresses/{{addressId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"addresses",
+										"{{addressId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "preferences",
+					"item": [
+						{
+							"name": "findAllPreferences",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/preferences",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"preferences"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatePreferences",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "x-lang",
+										"value": "{{lang}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"preferences\": [\n        {\n            \"type\": \"NOTIFICATIONS\",\n            \"key\": \"EMAIL_COMMUNICATION_NOTIFICATION\",\n            \"value\": \"1\"\n        },\n        {\n            \"type\": \"NOTIFICATIONS\",\n            \"key\": \"EMAIL_MARKETING_NOTIFICATION\",\n            \"value\": \"1\"\n        },\n        {\n            \"type\": \"NOTIFICATIONS\",\n            \"key\": \"EMAIL_SECURITY_NOTIFICATION\",\n            \"value\": \"1\"\n        },\n        {\n            \"type\": \"NOTIFICATIONS\",\n            \"key\": \"MOBILE_COMMUNICATION_NOTIFICATION\",\n            \"value\": \"1\"\n        },\n        {\n            \"type\": \"NOTIFICATIONS\",\n            \"key\": \"MOBILE_MARKETING_NOTIFICATION\",\n            \"value\": \"1\"\n        },\n        {\n            \"type\": \"NOTIFICATIONS\",\n            \"key\": \"MOBILE_SECURITY_NOTIFICATION\",\n            \"value\": \"1\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{userId}}/preferences",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"preferences"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "findAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if(jsonData?.rows?.[0]){",
+									"  pm.environment.set(\"userId\", jsonData?.rows?.[0]?.id || null);",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users?skip=0&take=10&roles=ADMIN",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								},
+								{
+									"key": "roles",
+									"value": "ADMIN"
+								},
+								{
+									"key": "sort",
+									"value": "email:desc,name:asc",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "osk.alves@gmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if(jsonData?.addresses?.[0]){",
+									"  pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/{{userId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if(jsonData?.addresses?.[0]){",
+									"  pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/check/?userId={{userId}}&username=oscar",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"check",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "osk.alves@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "{{userId}}"
+								},
+								{
+									"key": "username",
+									"value": "oscar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if (jsonData?.id) {",
+									"    pm.environment.set(\"userId\", jsonData?.id || null);",
+									"}",
+									"if (jsonData?.addresses?.[0]) {",
+									"    pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
+									"    pm.environment.set(\"latitude\", jsonData?.addresses?.[0]?.latitude || null);",
+									"    pm.environment.set(\"longitude\", jsonData?.addresses?.[0]?.longitude || null);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Gerar um nome aleatório e transformá-lo em slug",
+									"pm.environment.set(\"randomName\", pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\"));",
+									"pm.environment.set(\"randomNickname\", pm.environment.get(\"randomName\").split(\" \")[0]);",
+									"pm.environment.set(\"randomUsername\", pm.environment.get(\"randomName\").toLowerCase().replace(/[^a-z0-9]/g, \"-\"));",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{randomName}}\",\n    // \"email\": \"osk.alves@gmail.com\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"Abcd123!\",\n    \"nickname\": \"{{randomNickname}}\",\n    \"username\": \"{{randomUsername}}\",\n    //\"image\": \"{{avatarBase64}}\",\n    \"documents\": [\n        {\n            \"type\": \"CPF\",\n            \"value\": \"123.704.487-99\"\n        },\n        {\n            \"type\": \"RG\",\n            \"value\": 216006502\n        }\n    ],\n    \"address\": null,\n    \"roles\": [\n        \"CUSTOMER\"\n        // \"MERCHANT\"\n        // \"ADMIN\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if (jsonData?.id) {",
+									"    pm.environment.set(\"userId\", jsonData?.id || null);",
+									"}",
+									"if (jsonData?.addresses?.[0]) {",
+									"    pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
+									"    pm.environment.set(\"latitude\", jsonData?.addresses?.[0]?.latitude || null);",
+									"    pm.environment.set(\"longitude\", jsonData?.addresses?.[0]?.longitude || null);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Oscar Alves Updated\",\n    // \"username\": \"oscar-consumidor\"\n    // \"roles\": [\n    //    \"ADMIN\"\n    // ],\n     \"address\": {\n         \"id\": \"{{addressId}}\",\n        \"description\": null,\n         \"line1\": \"Rua bacabal, bangu\",\n    //     // \"number\": \"373\",\n         \"line2\": \"Loja B\"\n    //     // \"zipcode\": \"12345-678\",\n    //     //\"neighborhood\": \"Mueller Neck\",Î\n    //     // \"city\": \"Rio de Janeiro\",\n    //     // \"state\": \"Rio de Janeiro\",\n    //     // \"country\": \"Brasil\",\n    //     \"countryCode\": \"BRL\",\n    //     \"reference\": \"Em frente ao cachorro quente do Mineiro\",\n    //     // \"latitude\": -22.970722,\n    //     // \"longitude\": -43.182365,\n    //     // \"isDefault\": true,\n    //     \"type\": \"WORK\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/{{userId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/{{userId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "findAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if(jsonData?.rows?.[0]){",
+									"  pm.environment.set(\"roleId\", jsonData?.rows?.[0]?.id || null);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/roles?skip=0&take=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"roles"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "permissions",
+			"item": [
+				{
+					"name": "findAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(pm.response.text());",
+									"if(jsonData?.rows?.[0]){",
+									"  pm.environment.set(\"permissionId\", jsonData?.rows?.[0]?.id || null);",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-lang",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/permissions?skip=0&take=10&search=users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								},
+								{
+									"key": "roleId",
+									"value": "{{roleId}}",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "users"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/permissions/{{permissionId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions",
+								"{{permissionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"permissionId\", jsonData.id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"roles.read\",\n    \"description\": \"Ler papéis de usuários\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/permissions?skip=0&take=10&roleId={{roleId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "10"
+								},
+								{
+									"key": "roleId",
+									"value": "{{roleId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"roles.read\",\n    \"description\": \"Ler papéis de usuário\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/permissions/{{permissionId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions",
+								"{{permissionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/permissions/{{permissionId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"permissions",
+								"{{permissionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

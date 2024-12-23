@@ -2,12 +2,12 @@
 
 Este repositório é um monorepo que contém dois projetos principais, projetados para oferecer uma solução completa e robusta:
 
-1. **Hubla Backend:** Uma poderosa API desenvolvida com NestJS, Prisma, e PostgreSQL, proporcionando uma arquitetura escalável, modular e segura para gerenciar transações e dados essenciais.
+1. **Hubla Backend:** Uma poderosa API desenvolvida com NestJS, Prisma, e PostgreSQL, Redis proporcionando uma arquitetura escalável, modular e segura para gerenciar transações e dados essenciais.
 2. **Hubla Frontend:** Uma interface moderna e dinâmica construída com React,Next.js, Tailwind CSS, e Shadcn UI
 
 | Backend | Frontend |
 | --- | --- |
-| <img src="hubla-backend-swagger.png" alt="Hubla Backend" widht="50%" /> | <img src="hubla-frontend.png" alt="Hubla Frontend" widht="50%" /> |
+| <img src="docs/hubla-backend-swagger.png" alt="Hubla Backend" widht="50%" /> | <img src="docs/hubla-frontend.png" alt="Hubla Frontend" widht="50%" /> |
 
 Este documento detalha as instruções para configurar e executar o ambiente tanto em modo de desenvolvimento quanto em modo de produção, além de fornecer descrições sobre comandos essenciais do Prisma e o acesso à documentação Swagger para facilitar a integração e uso da API.
 
@@ -59,7 +59,7 @@ Antes de iniciar, certifique-se de que você tem os seguintes softwares instalad
 
 ### 1. Subir o ambiente com Docker Compose
 
-![containers](containers.png) Na raiz do monorepo, execute:
+![containers](docs/containers.png) Na raiz do monorepo, execute:
 
 ```bash
 # Subir apenas os serviços necessários para desenvolvimento
@@ -127,18 +127,38 @@ yarn docker:down
 yarn docker:prod
 ```
 
-![Containers prod](containers-prod.png)
+![Containers prod](docs/containers-prod.png)
 
 Este script configura e executa os contêineres necessários para a aplicação, criando automaticamente os seguintes serviços:
 
-- hubla-postgres: Banco de dados PostgreSQL, responsável pelo armazenamento de dados.
-- hubla-pgadmin: Interface de administração do PostgreSQL, acessível em http://localhost:16543.
-- hubla-backend: API do backend, disponível na porta 3001.
-- hubla-frontend: Aplicação frontend, acessível em http://localhost:3000.
+- **hubla-postgres:** Banco de dados PostgreSQL, responsável pelo armazenamento de dados.
+- **hubla-pgadmin:** Interface de administração do PostgreSQL, acessível em http://localhost:16543.
+- **hubla-redis:** Interface para gerenciar cache e dados em memoria, na porta `6379`.
+- **hubla-backend:** API do backend, disponível na porta `3010`.
+- **hubla-frontend:** Aplicação frontend, acessível em http://localhost:3000.
 
 > **Nota:** Todos os serviços são configurados automaticamente usando o arquivo docker-compose.yml no modo de produção. Após a inicialização, a aplicação estará pronta para testes ou uso final em ambiente local.
 
 ---
+
+## Autenticação
+
+Para realizar testes na API, disponibilizamos duas formas principais de interação:
+
+### 1. Arquivos Postman
+
+Fornecemos arquivos de configuração para facilitar o uso do Postman, permitindo que você importe as rotas diretamente em sua workspace.
+
+| Arquivo | Link de Download |
+| --- | --- |
+| **Collection - Hubla Full Stack - v1.2.0** | [Baixar Collection](docs/postman/hubla-dev.postman_environment.json) |
+| **Environment - HublaDev** | [Baixar Environment](docs/postman/hubla-dev.postman_environment.json) |
+
+### 2. Swagger
+
+Além disso, a API possui suporte ao **Swagger**, permitindo que você visualize e interaja diretamente com as rotas através de uma interface web amigável.
+
+> **Dica**: Use o Swagger para realizar testes diretamente, sem a necessidade de ferramentas externas.
 
 ## **Estrutura do Repositório**
 
@@ -303,7 +323,7 @@ open coverage/lcov-report/index.html
 start coverage/lcov-report/index.html
 ```
 
-![open coverage/lcov-report/index.html](test-coverage-html.png) <img src="test-unit-coverage.png" alt="yarn jest:cov" style="width:100%; max-width: 800px;">
+![open coverage/lcov-report/index.html](docs/test-coverage-html.png) <img src="docs/test-unit-coverage.png" alt="yarn jest:cov" style="width:100%; max-width: 800px;">
 
 ### **Testes de Integração (E2E)**
 
@@ -320,7 +340,7 @@ Os testes E2E garantem que os módulos e componentes interajam corretamente no s
 yarn test:e2e
 ```
 
-<img src="test-e2e.png" alt="yarn test:e2e" style="width:100%; max-width: 800px;">
+<img src="docs/test-e2e.png" alt="yarn test:e2e" style="width:100%; max-width: 800px;">
 
 ## **Frontend**
 

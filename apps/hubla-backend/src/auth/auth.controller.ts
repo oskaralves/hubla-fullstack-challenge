@@ -115,8 +115,7 @@ export class AuthController {
   @Get('password/forgot/check/:code')
   @ApiOperation({
     summary: 'passwordForgotCheckCode',
-    description:
-      'Atualiza a senha do usuário utilizando o código recebido no e-mail cadastrado.',
+    description: 'Verifica se o código recebido digitado é válido.',
   })
   @ApiNoContentResponse({ description: 'OK' })
   @ApiNotFoundResponse({
@@ -133,7 +132,7 @@ export class AuthController {
   @ApiOperation({
     summary: 'passwordReset',
     description:
-      'Atualiza a senha do usuário utilizando o código recebido no e-mail cadastrado.',
+      'Atualiza a senha do usuário utilizando o código recebido e nova senha.',
   })
   @ApiNoContentResponse({ description: 'OK' })
   @ApiNotFoundResponse({
@@ -153,8 +152,7 @@ export class AuthController {
   @IsPublic()
   @ApiOperation({
     summary: 'emailConfirmation',
-    description:
-      'Atualiza a senha do usuário utilizando o código recebido no e-mail cadastrado.',
+    description: 'Confirma que o email do usuário foi verificado.',
   })
   @ApiNoContentResponse({ description: 'OK' })
   @ApiNotFoundResponse({

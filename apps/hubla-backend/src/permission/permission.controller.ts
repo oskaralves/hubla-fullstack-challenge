@@ -54,7 +54,7 @@ export class PermissionController {
   @Permissions(PermissionPermissionEnum.CREATE)
   @ApiOperation({
     summary: 'create',
-    description: 'Cadastra um novo usuário',
+    description: 'Cadastra uma nova permissão.',
   })
   @ApiCreatedResponse({
     type: PermissionDto,
@@ -84,7 +84,7 @@ export class PermissionController {
   @UseInterceptors(CacheInterceptor)
   @ApiOperation({
     summary: 'findAll',
-    description: 'Retorna a lista paginada de usuários',
+    description: 'Retorna a lista paginada de permissões.',
   })
   @ApiOkResponse({
     description: 'List of paginated permissions',
@@ -112,7 +112,7 @@ export class PermissionController {
   @UseInterceptors(CacheInterceptor)
   @ApiOperation({
     summary: 'findOne',
-    description: 'Retorna um usuário',
+    description: 'Retorna uma permissão.',
   })
   @ApiOkResponse({ description: 'Permission found', type: PermissionDto })
   @ApiUnauthorizedResponse({
@@ -136,7 +136,7 @@ export class PermissionController {
   @Permissions(PermissionPermissionEnum.UPDATE)
   @ApiOperation({
     summary: 'update',
-    description: 'Atualiza um ou mais atributos de um usuário',
+    description: 'Atualiza um ou mais atributos da permissão.',
   })
   @ApiOkResponse({ description: 'OK', type: PermissionDto })
   @ApiUnauthorizedResponse({
@@ -163,7 +163,7 @@ export class PermissionController {
   @Permissions(PermissionPermissionEnum.DELETE)
   @ApiOperation({
     summary: 'remove',
-    description: 'Remove um usuário',
+    description: 'Remove uma permissão.',
   })
   @ApiNoContentResponse()
   @ApiUnauthorizedResponse({

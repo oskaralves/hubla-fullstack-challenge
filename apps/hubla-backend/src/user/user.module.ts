@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { UsersController } from './controller/users.controller';
+import { UserController } from './controller/user.controller';
 import { UserRoleHelper } from './helper/user-role.helper';
 import { UserValidationHelper } from './helper/user-validation.helper';
 import { CheckUserExistenceUseCase } from './use-case/check-user-existence.use-case';
@@ -12,7 +12,7 @@ import { UpdateUserUseCase } from './use-case/update-user.use-case';
 
 @Module({
   imports: [],
-  controllers: [UsersController],
+  controllers: [UserController],
   providers: [
     CreateUserUseCase,
     UpdateUserUseCase,

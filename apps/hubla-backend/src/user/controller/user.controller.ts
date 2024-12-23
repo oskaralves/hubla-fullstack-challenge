@@ -50,7 +50,7 @@ import { UpdateUserUseCase } from '../use-case/update-user.use-case';
 @Controller('users')
 @UseGuards(AccessTokenGuard, RolesGuard)
 @ApiTags('Users')
-export class UsersController {
+export class UserController {
   constructor(
     private readonly createUserUseCase: CreateUserUseCase,
     private readonly checkUserExistenceUseCase: CheckUserExistenceUseCase,
@@ -65,7 +65,7 @@ export class UsersController {
   @Permissions(UserPermissionEnum.CREATE)
   @ApiOperation({
     summary: 'create',
-    description: 'Cadastra um novo usuário',
+    description: 'Cria um novo usuário.',
   })
   @ApiCreatedResponse({ type: UserDto, description: 'Created user' })
   @ApiUnauthorizedResponse({
@@ -96,7 +96,7 @@ export class UsersController {
   @UseInterceptors(CacheInterceptor)
   @ApiOperation({
     summary: 'findAll',
-    description: 'Retorna a lista paginada de usuários',
+    description: 'Retorna a lista paginada de usuários.',
   })
   @ApiOkResponse({
     description: 'List of paginated users',
@@ -121,7 +121,7 @@ export class UsersController {
   @Permissions(UserPermissionEnum.READ)
   @ApiOperation({
     summary: 'checkExistence',
-    description: 'Verifica se o username ou email já existe no sistema',
+    description: 'Verifica se o username ou email já existe no sistema.',
   })
   @ApiOkResponse({
     description: 'Availability status',
@@ -159,7 +159,7 @@ export class UsersController {
   @UseInterceptors(CacheInterceptor)
   @ApiOperation({
     summary: 'findOne',
-    description: 'Retorna um usuário',
+    description: 'Retorna um usuário.',
   })
   @ApiOkResponse({ description: 'User found', type: UserDto })
   @ApiUnauthorizedResponse({
@@ -184,7 +184,7 @@ export class UsersController {
   @Permissions(UserPermissionEnum.UPDATE)
   @ApiOperation({
     summary: 'update',
-    description: 'Atualiza um ou mais atributos de um usuário',
+    description: 'Atualiza um ou mais atributos de um usuário.',
   })
   @ApiOkResponse({ description: 'OK', type: UserDto })
   @ApiUnauthorizedResponse({

@@ -39,11 +39,11 @@ async function bootstrap() {
 
   // For documentation
   const options = new DocumentBuilder()
-    .setTitle('Hubla - Full Stack Challenge - API Documentation')
+    .setTitle('Hubla - Desafio Full Stack - Documentação da API')
     .setDescription(
-      `This documentation details the API endpoints for the Hubla Full Stack Challenge.
-      \nThe API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.
-      \nUse this documentation as a reference for integration and correct use of the resources provided by the API.`,
+      `Esta documentação detalha os endpoints da API para o Hubla Full Stack Challenge.
+      \nA API é responsável por gerenciar transações financeiras relacionadas ao modelo criador-afiliado, permitindo uploads de arquivos em massa, validação de dados e operações de listagem paginada e criação manual.
+      \nUse esta documentação como referência para integração e uso correto dos recursos fornecidos pela API.`,
     )
     .addBearerAuth({ type: 'http', description: 'insira o accessToken' })
     .setVersion('1.2.0')

@@ -8,3 +8,12 @@ export const commonTransactionTypeNatureVariants: Record<
   INPUT: "outline",
   OUTPUT: "success",
 };
+
+export const commonStatusVariants: Record<
+  keyof DictionaryType["enum"]["COMMON_STATUS_ENUM"],
+  BadgeProps["variant"]
+> = {
+  DISABLED: "neutral",
+  REMOVED: "destructive",
+  ENABLED: "success",
+};

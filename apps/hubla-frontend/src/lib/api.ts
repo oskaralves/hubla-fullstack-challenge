@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { APP_LOCALE_KEY } from "@/constants";
 import { cookies } from "next/headers";
 
@@ -9,12 +10,20 @@ async function fetchRequest(
   input: string,
   options?: RequestOptions
 ): Promise<Response> {
+  const session = await auth();
+
   const xLang = cookies().get(APP_LOCALE_KEY)?.value || "pt-BR";
   const headers: HeadersInit = {
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json; charset=utf-8",
     "x-lang": xLang,
   };
+  const accessToken = session?.user.accessToken;
+
+  if (options?.withCredentials && accessToken) {
+    headers["Authorization"] = `Bearer ${accessToken}`;
+  }
+
   const requestOptions: RequestInit = {
     ...options,
     headers: {

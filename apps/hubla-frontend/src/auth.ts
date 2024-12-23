@@ -79,8 +79,8 @@ export const {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (token?.accessToken) {
-        const decodedToken = jwtDecode(token.accessToken);
+      if (token?.accessToken && typeof token.accessToken === "string") {
+        const decodedToken = jwtDecode(token?.accessToken);
         token.accessTokenExpires = (decodedToken?.exp || 0) * 1000;
       }
       if (!token?.sub) return token;

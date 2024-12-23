@@ -10,6 +10,7 @@ COPY ./package.json ./yarn.lock ./
 COPY ./apps/hubla-frontend/package*.json ./apps/hubla-frontend/
 COPY ./apps/hubla-frontend/public ./apps/hubla-frontend/public
 COPY ./apps/hubla-frontend/tsconfig*.json ./apps/hubla-frontend/
+COPY ./apps/hubla-frontend/next-auth.d.ts ./apps/hubla-frontend/
 COPY ./apps/hubla-frontend/src ./apps/hubla-frontend/src
 COPY ./apps/hubla-frontend/tailwind.config.ts ./apps/hubla-frontend/
 COPY ./apps/hubla-frontend/postcss.config.mjs ./apps/hubla-frontend/

@@ -1,0 +1,7 @@
+enum CommonStatusEnum {
+    DISABLED
+    ENABLED
+    REMOVED
+
+    @@schema("public")
+}

@@ -1,0 +1,37 @@
+model User {
+    id                String           @id @default(uuid())
+    name              String
+    nickname          String?
+    username          String?          @unique
+    email             String           @unique
+    emailVerified     DateTime?        @map("email_verified")
+    cellphone         String?
+    cellphoneVerified DateTime?        @map("cellphone_verified")
+    password          String
+    gender            GenderEnum?
+    birthDate         DateTime?        @map("birth_date")
+    image             String?          @map("image")
+    coverImage        String?          @map("cover_image")
+    status            CommonStatusEnum @default(ENABLED)
+    createdAt         DateTime         @default(now()) @map("created_at")
+    updatedAt         DateTime         @updatedAt @map("updated_at")
+    accounts          Account[]
+    roles             UserRole[]
+
+    @@map("users")
+    @@schema("public")
+}
+
+enum GenderEnum {
+    MALE // Masculino
+    FEMALE // Feminino
+    NON_BINARY // Não binário
+    TRANSGENDER // Transgênero
+    GENDER_FLUID // Gênero fluido
+    AGENDER // Agênero
+    BIGENDER // Bigênero
+    OTHER // Outro
+    PREFER_NOT_TO_SAY // Prefere não dizer
+
+    @@schema("public")
+}

@@ -1,0 +1,28 @@
+model UserRole {
+    id     String       @id @default(uuid())
+    userId String       @map("user_id")
+    role   UserRoleEnum @default(AFFILIATE)
+    user   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("users_roles")
+    @@schema("public")
+}
+
+model RolePermission {
+    id           String       @id @default(uuid())
+    role         UserRoleEnum @map("role")
+    permissionId String       @map("permission_id")
+    permission   Permission   @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+    @@unique([permissionId, role], name: "permissionId_role_unique")
+    @@map("role_permissions")
+    @@schema("public")
+}
+
+enum UserRoleEnum {
+    ADMIN
+    AFFILIATE
+    PRODUCER
+
+    @@schema("public")
+}

@@ -1,0 +1,20 @@
+model Account {
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refreshToken      String?  @map("refresh_token")
+    accessToken       String?  @map("access_token")
+    expiresAt         Int?     @map("expires_at")
+    tokenType         String?  @map("token_type")
+    scope             String?
+    idToken           String?  @map("id_token")
+    sessionState      String?  @map("session_state")
+    createdAt         DateTime @default(now())
+    updatedAt         DateTime @updatedAt
+    user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@id([provider, providerAccountId])
+    @@map("accounts")
+    @@schema("public")
+}

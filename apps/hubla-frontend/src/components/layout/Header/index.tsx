@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button";
 import { menuItemIconProps } from "@/constants";
 import { useAppContext } from "@/contexts/AppContext";
 import { IndentDecreaseIcon, IndentIncreaseIcon } from "lucide-react";
+import { Session } from "next-auth";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { SessionUser } from "../../../types/auth";
 import { SidebarMobile } from "../HeaderMobile";
 import { UserSession } from "../Sidebar/UserSession";
 
 type HeaderProps = {
-  user: SessionUser;
+  user: Session["user"];
 };
 
 export function Header({ user }: HeaderProps) {

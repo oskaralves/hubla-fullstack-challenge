@@ -4,12 +4,12 @@ import { useAppContext } from "@/contexts/AppContext";
 import { useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { getNavigation } from "@/navigation";
-import { SessionUser } from "@/types/auth";
+import { Session } from "next-auth";
 import { ReactNode } from "react";
 import { MenuItem } from "./MenuItem";
 
 export type SidebarProps = {
-  user: SessionUser;
+  user: Session["user"];
   children: ReactNode;
 };
 

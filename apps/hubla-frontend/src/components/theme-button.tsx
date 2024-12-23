@@ -39,7 +39,7 @@ export const ThemeButton = () => {
           )}
         </Button>
       </TooltipTrigger>
-      <TooltipContent className="" side="top">
+      <TooltipContent className="" side="left">
         Mudar para {resolvedTheme === "dark" ? "light" : "dark"}
       </TooltipContent>
     </Tooltip>

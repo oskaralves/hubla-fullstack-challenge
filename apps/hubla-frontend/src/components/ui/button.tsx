@@ -15,7 +15,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default:
+          "bg-[#c1ea47] text-black hover:bg-[#b0d444]/90 dark:bg-[#d7ff60] text-black",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-primary text-primary font-medium",
@@ -100,7 +101,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <span className="flex items-center">{startIcon}</span>
           )}
           {isLoading ? (
-            <Loading variant={variant} isLoading size={size} />
+            <Loading
+              variant={variant === "default" ? "outline" : variant}
+              isLoading
+              size={size}
+            />
           ) : children ? (
             <span
               className={cn(

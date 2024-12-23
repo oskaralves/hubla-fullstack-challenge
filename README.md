@@ -582,6 +582,9 @@ Essa estrutura é bem organizada e segue boas práticas para projetos modernos c
 - [x] Implementar tratamento de exceções com retorno de mensagens de sucesso e erro.
 - [x] Criar controller e services de transaction-types para filtragem de transactions por tipo.
 - [x] Revisão e Refinamento da documentação no Swagger
+- [x] Implementar Cache Manager com Redis no lado do servidor.
+- [x] Implementar módulo de autenticação com `accessToken` e `refreshToken`.
+- [x] Permissão por role de usuário.
 
 #### **Frontend**
 
@@ -593,10 +596,15 @@ Essa estrutura é bem organizada e segue boas práticas para projetos modernos c
 - [x] Criar página para listar saldo atual de produtores e afiliados.
 - [x] Adicionar estrutura de internacionalização para dois idiomas (pt-BR e en-US).
 - [x] Validação com zod de schema de upload de arquivo.txt.
-- [x] Tela de Importar arquivo de transações.
-- [x] Tela de Listar Produtor/Afiliado com saldo atual.
-- [x] Revisão e Refinamento das telas e componentes
-- [ ] Implementar teste unitários nos componentes utilizados.
+- [x] Criar Tela de Importar arquivo de transações.
+- [x] Criar Tela de Listar Produtor/Afiliado com saldo atual.
+- [x] Criar Tela de login;
+- [x] Criar Tela de esqueci a senha.
+- [x] Criar Tela de criar nova senha.
+- [x] Implementar tela e lógica de autenticação.
+- [x] Implementar logica de refresh token, quando token é expirado.
+- [x] Preparação para adição de outros proveders de auth (Google, Github, Facebook, etc).
+- [x] Revisão e Refinamento das telas e componentes.
 
 ---
 
@@ -604,10 +612,17 @@ Essa estrutura é bem organizada e segue boas práticas para projetos modernos c
 
 #### **Backend**
 
-- [ ] Implementar Cache Manager com Redis no lado do servidor.
-- [ ] Implementar módulo de autenticação com `accessToken` e `refreshToken`.
+- [ ] Implementar serviço de envio de email
+- [ ] Criar template html para email;
+- [ ] Implementar lógica de filas, (RabbitMQ ou Redis) - Alternativa para envio de arquivo.txt muito pesado
 
 #### **Frontend**
 
 - [ ] Implementar testes unitários de componentes utilizando Jest e Testing Library.
-- [ ] Implementar tela e lógica de autenticação.
+- [ ] Criar tela de listagem de usuários.
+- [ ] Criar tela de listagem de permissões por roles.
+
+#### **Monorepo**
+
+- [ ] Criar `(raiz) packages/shared/` e migrar type's e dto's para aproveitar os benefícios do monorepo.
+- [ ] Migrar ui components do projeto no `(raiz) packages/shared/`.

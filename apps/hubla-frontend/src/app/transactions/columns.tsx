@@ -85,22 +85,6 @@ export const useTransactionListColumns = () => {
       },
     },
     {
-      accessorKey: "product",
-      enableResizing: true,
-      size: "25%" as unknown as number,
-      maxSize: "25%" as unknown as number,
-      minSize: "25%" as unknown as number,
-      meta: {
-        title: PRODUCT,
-        loading: (
-          <Skeleton className="h-6 w-32 rounded bg-slate-300/40 dark:bg-slate-300/20" />
-        ),
-      },
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={PRODUCT} />
-      ),
-    },
-    {
       accessorKey: "seller",
       enableResizing: true,
       enableSorting: true,
@@ -117,6 +101,23 @@ export const useTransactionListColumns = () => {
         <DataTableColumnHeader column={column} title={SELLER} />
       ),
     },
+    {
+      accessorKey: "product",
+      enableResizing: true,
+      size: "25%" as unknown as number,
+      maxSize: "25%" as unknown as number,
+      minSize: "25%" as unknown as number,
+      meta: {
+        title: PRODUCT,
+        loading: (
+          <Skeleton className="h-6 w-32 rounded bg-slate-300/40 dark:bg-slate-300/20" />
+        ),
+      },
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={PRODUCT} />
+      ),
+    },
+
     {
       accessorKey: "transactionTypes",
       enableResizing: true,

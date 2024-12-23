@@ -9,4 +9,5 @@ export interface IMenuItem {
   icon?: ReactNode;
   url?: string;
   children?: IMenuItem[];
+  roles?: string[];
 }

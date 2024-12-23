@@ -6,6 +6,7 @@ import {
   ManagerIcon,
   TransactionIcon,
 } from "hugeicons-react";
+import { authRoles } from "../authRoles";
 import { IMenuItem } from "./types";
 import {
   ADMIN_TRANSACTION_IMPORT_URL,
@@ -20,6 +21,7 @@ export const admin = (locale: Locale): IMenuItem => {
     id: "admin-group",
     title: ADMINISTRATION,
     type: "group",
+    roles: [...authRoles.ADMIN],
     children: [
       {
         id: "admin-list-transactions",
@@ -27,6 +29,7 @@ export const admin = (locale: Locale): IMenuItem => {
         type: "item",
         url: ADMIN_TRANSACTION_LIST_URL,
         icon: <TransactionIcon {...menuItemIconProps} />,
+        roles: [...authRoles.ADMIN],
       },
       {
         id: "admin-transactions-import",
@@ -34,6 +37,7 @@ export const admin = (locale: Locale): IMenuItem => {
         type: "item",
         url: ADMIN_TRANSACTION_IMPORT_URL,
         icon: <DocumentAttachmentIcon {...menuItemIconProps} />,
+        roles: [...authRoles.ADMIN],
       },
       {
         id: "admin-transactions-balance",
@@ -41,6 +45,7 @@ export const admin = (locale: Locale): IMenuItem => {
         type: "item",
         url: ADMIN_TRANSACTION_SELLER_BALANCES_URL,
         icon: <ManagerIcon {...menuItemIconProps} />,
+        roles: [...authRoles.ADMIN],
       },
     ],
   };

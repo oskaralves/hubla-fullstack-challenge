@@ -70,7 +70,7 @@ export function Header({ user }: HeaderProps) {
         <div className="flex flex-row items-center gap-2">
           <LanguageSwitcher />
           <UserSession user={user} isHeader id="header" />
-          <SidebarMobile />
+          <SidebarMobile user={user} />
         </div>
       </div>
     </header>

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { getNavigation } from "@/navigation";
 import { Session } from "next-auth";
 import { ReactNode } from "react";
+import { hasRole } from "../../../authRoles";
 import { MenuItem } from "./MenuItem";
 
 export type SidebarProps = {
@@ -26,9 +27,11 @@ export const Sidebar = ({ user, children }: SidebarProps) => {
     >
       <nav className="flex h-full flex-col">
         <ul className="scrollbar-width-none flex h-full min-w-[30px] flex-1 flex-col overflow-y-auto pb-4">
-          {navigation.items.map((item, idx) => (
-            <MenuItem key={`menu-item--${item.title}-${idx}`} item={item} />
-          ))}
+          {navigation.items
+            .filter((item) => hasRole(user, item.roles))
+            .map((item, idx) => (
+              <MenuItem key={`menu-item--${item.title}-${idx}`} item={item} />
+            ))}
         </ul>
         {children}
       </nav>

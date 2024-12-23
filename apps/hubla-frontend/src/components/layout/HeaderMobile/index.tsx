@@ -7,7 +7,9 @@ import { useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { getNavigation } from "@/navigation";
 import { motion, useCycle } from "framer-motion";
+import { Session } from "next-auth";
 import { usePathname } from "next/navigation";
+import { hasRole } from "../../../authRoles";
 import { MenuItem } from "../Sidebar/MenuItem";
 
 const sidebar = {
@@ -29,7 +31,10 @@ const sidebar = {
   },
 };
 
-export const SidebarMobile = () => {
+type SidebarMobileProps = {
+  user: Session["user"];
+};
+export const SidebarMobile = ({ user }: SidebarMobileProps) => {
   const containerRef = useRef(null);
   const pathname = usePathname();
   const { locale } = useLanguage();
@@ -65,13 +70,15 @@ export const SidebarMobile = () => {
             isOpen ? "overflow-y-auto" : "overflow-hidden"
           )}
         >
-          {navigation.items.map((item, idx) => {
-            return (
-              <motion.div key={idx} variants={MenuItemVariants}>
-                <MenuItem item={item} />
-              </motion.div>
-            );
-          })}
+          {navigation.items
+            .filter((item) => hasRole(user, item.roles))
+            .map((item, idx) => {
+              return (
+                <motion.div key={idx} variants={MenuItemVariants}>
+                  <MenuItem item={item} />
+                </motion.div>
+              );
+            })}
         </motion.ul>
         <MenuToggle toggleOpen={toggleOpen} />
       </motion.nav>

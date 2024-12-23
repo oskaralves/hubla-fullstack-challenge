@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, TransactionNatureEnum } from '@prisma/client';
 import { plainToClass } from 'class-transformer';
-import { ResponseHelper } from '../common/helpers/response.helper';
-import { SearchHelper } from '../common/helpers/search.helper';
-import { SortHelper } from '../common/helpers/sort.helper';
+import { ResponseHelper } from '../common/helper/response.helper';
+import { SearchHelper } from '../common/helper/search.helper';
+import { SortHelper } from '../common/helper/sort.helper';
 import { PrismaService } from '../prisma/prisma.service';
 import { BulkTransactionsResponseDto } from './dto/bulk-transactions-response.dto';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
@@ -12,7 +12,7 @@ import { PagedTransactionsQueryParamsDto } from './dto/paged-transactions-params
 import { PagedTransactionsResponseDto } from './dto/paged-transactions-response.dto';
 import { SellerBalanceDto } from './dto/seller-balance.dto';
 import { TransactionDto } from './dto/transaction.dto';
-import { TransactionValidationHelper } from './helpers/transaction-validation.helper';
+import { TransactionValidationHelper } from './helper/transaction-validation.helper';
 
 @Injectable()
 export class TransactionService {

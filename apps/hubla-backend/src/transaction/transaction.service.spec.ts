@@ -2,7 +2,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TransactionNatureEnum } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { TransactionValidationHelper } from './helpers/transaction-validation.helper';
+import { TransactionValidationHelper } from './helper/transaction-validation.helper';
 import { TransactionService } from './transaction.service';
 
 const mockPrismaService = {

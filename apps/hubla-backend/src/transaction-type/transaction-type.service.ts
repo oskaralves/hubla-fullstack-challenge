@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { plainToClass } from 'class-transformer';
-import { ResponseHelper } from '../common/helpers/response.helper';
-import { SearchHelper } from '../common/helpers/search.helper';
-import { SortHelper } from '../common/helpers/sort.helper';
+import { ResponseHelper } from '../common/helper/response.helper';
+import { SearchHelper } from '../common/helper/search.helper';
+import { SortHelper } from '../common/helper/sort.helper';
 import { PrismaService } from '../prisma/prisma.service';
 import { PagedTransactionTypesQueryParamsDto } from './dto/paged-transaction-types-params.dto';
 import { PagedTransactionTypesResponseDto } from './dto/paged-transaction-types-response.dto';

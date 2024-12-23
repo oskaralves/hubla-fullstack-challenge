@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TransactionValidationHelper } from './helpers/transaction-validation.helper';
+import { TransactionValidationHelper } from './helper/transaction-validation.helper';
 import { TransactionController } from './transaction.controller';
 import { TransactionService } from './transaction.service';
 

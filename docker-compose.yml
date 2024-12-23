@@ -36,6 +36,19 @@ services:
     networks:
       - hubla-network
 
+  redis:
+    image: redis
+    container_name: hubla-redis
+    restart: always
+    environment:
+      REDIS_HOST: ${REDIS_HOST:-localhost}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis123}
+    ports:
+      - "6379:6379"
+    networks:
+      - hubla-network
+
   hubla-backend:
     build:
       context: .

@@ -5,7 +5,14 @@ const nextConfig = {
       fullUrl: true,
     },
   },
-  images: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+      },
+    ],
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: "10mb",

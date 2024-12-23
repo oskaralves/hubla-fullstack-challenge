@@ -127,6 +127,8 @@ yarn docker:down
 yarn docker:prod
 ```
 
+![Containers prod](containers-prod.png)
+
 Este script configura e executa os contêineres necessários para a aplicação, criando automaticamente os seguintes serviços:
 
 - hubla-postgres: Banco de dados PostgreSQL, responsável pelo armazenamento de dados.

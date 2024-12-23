@@ -2,8 +2,8 @@
 
 Este repositório é um monorepo que contém dois projetos principais, projetados para oferecer uma solução completa e robusta:
 
-1. **Hubla Backend:** Uma poderosa API desenvolvida com NestJS, Prisma, e PostgreSQL, Redis proporcionando uma arquitetura escalável, modular e segura para gerenciar transações e dados essenciais.
-2. **Hubla Frontend:** Uma interface moderna e dinâmica construída com React,Next.js, Tailwind CSS, e Shadcn UI
+1. **Hubla Backend:** Uma poderosa API desenvolvida com NestJS, Prisma, PostgreSQL e Redis proporcionando uma arquitetura escalável, modular e segura para gerenciar transações e dados essenciais.
+2. **Hubla Frontend:** Uma interface moderna e dinâmica construída com React, Next.js, Tailwind CSS, Shadcn UI e Auth.js.
 
 | Backend | Frontend |
 | --- | --- |

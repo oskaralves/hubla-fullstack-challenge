@@ -11,8 +11,8 @@ import { UserModule } from '../user/user.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { SignInValidationMiddleware } from './middleware/sign-in-validation.middleware';
-import { AccessTokenStrategy } from './strategie/access-token.strategy';
-import { RefreshTokenStrategy } from './strategie/refresh-token.strategy';
+import { AccessTokenStrategy } from './strategy/access-token.strategy';
+import { RefreshTokenStrategy } from './strategy/refresh-token.strategy';
 
 @Module({
   imports: [UserModule, PassportModule],

@@ -45,6 +45,7 @@ async function bootstrap() {
       \nThe API is responsible for managing financial transactions related to the creator-affiliate model, allowing for bulk file uploads, data validation, and paginated listing and manual creation operations.
       \nUse this documentation as a reference for integration and correct use of the resources provided by the API.`,
     )
+    .addBearerAuth({ type: 'http', description: 'insira o accessToken' })
     .setVersion('1.2.0')
     .build();
 

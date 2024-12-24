@@ -16,7 +16,6 @@ const TransactionImportPage = async () => {
         showGoBack
         title={`${IMPORT} ${TRANSACTIONS}`}
       />
-
       <TransactionFileForm />
     </div>
   );

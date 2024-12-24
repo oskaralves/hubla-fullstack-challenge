@@ -17,6 +17,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { getSidebarExtendedAction } from "../actions/sidebar-extended.action";
+import { AuthContextProvider } from "../contexts/AuthContext";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -54,16 +55,16 @@ export default async function RootLayout({
                     <AppContextProvider
                       defaultSidebarExpanded={defaultSidebarExpanded}
                     >
-                      {/* <AuthContextProvider> */}
-                      <Header user={session.user} />
-                      <Sidebar user={session.user}>
-                        <UserSession id="sidebar" user={session.user} />
-                      </Sidebar>
+                      <AuthContextProvider session={session}>
+                        <Header user={session.user} />
+                        <Sidebar user={session.user}>
+                          <UserSession id="sidebar" user={session.user} />
+                        </Sidebar>
 
-                      <div className="max-h-[calc(100vh-68px)] overflow-auto rounded-tl-3xl border-l border-t border-border bg-neutral-100 text-foreground dark:bg-neutral-900">
-                        <div className="min-h-full p-6">{children}</div>
-                      </div>
-                      {/* </AuthContextProvider> */}
+                        <div className="max-h-[calc(100vh-68px)] overflow-auto rounded-tl-3xl border-l border-t border-border bg-neutral-100 text-foreground dark:bg-neutral-900">
+                          <div className="min-h-full p-6">{children}</div>
+                        </div>
+                      </AuthContextProvider>
                     </AppContextProvider>
                   </main>
                 ) : (

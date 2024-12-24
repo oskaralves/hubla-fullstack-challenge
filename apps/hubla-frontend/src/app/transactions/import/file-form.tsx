@@ -16,6 +16,7 @@ import { Txt02Icon } from "hugeicons-react";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { useForm } from "react-hook-form";
+import { useAuthContext } from "../../../contexts/AuthContext";
 import { useDictionary } from "../../../contexts/dictionary-context";
 import { useLanguage } from "../../../contexts/language-context";
 import { cn } from "../../../lib/utils";
@@ -26,11 +27,12 @@ import {
 import { SectionCard } from "../../_components/section-card";
 
 export const TransactionFileForm = () => {
+  const { currentSession } = useAuthContext();
+
   const { locale } = useLanguage();
   const router = useRouter();
   const { showToast, closeToast } = useSonnerToast();
   const [isPending, startTransition] = useTransition();
-
   const { general } = useDictionary();
   const {
     UPLOAD,
@@ -53,7 +55,7 @@ export const TransactionFileForm = () => {
 
   const onSubmit = (values: ImportTransactionFormValueType) => {
     startTransition(async () => {
-      const res = await importTransactionsAction(values.file);
+      const res = await importTransactionsAction(values.file, currentSession);
 
       if (!res.success) {
         const idError = showToast({

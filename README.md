@@ -5,6 +5,7 @@
 ## Sumário
 
 - [Introdução](#introdução)
+- [Apresentação em vídeo](#apresentação-em-vídeo)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
   - [Backend](#backend)
   - [Frontend](#frontend)
@@ -40,11 +41,27 @@ Este repositório é um monorepo que contém dois projetos principais, projetado
 | --- | --- |
 | <img src="docs/hubla-backend-swagger.png" alt="Hubla Backend" /> | <img src="docs/hubla-frontend.png" alt="Hubla Frontend" /> |
 
-## Apresentação do projeto
-
-<video width="100%" controls src="docs/apresentacao-projeto-desafio-hubla.mp4" title="Apresentação do projeto rodando no ambiente local de desenvolvimento"></video>
-
 Este documento detalha as instruções para configurar e executar o ambiente tanto em modo de desenvolvimento quanto em modo de produção, além de fornecer descrições sobre comandos essenciais do Prisma e o acesso à documentação Swagger para facilitar a integração e uso da API.
+
+## Apresentação em vídeo
+
+| Vídeo | Link de arquivo .MP4 |
+| --- | --- |
+| **Apresentação do projeto** | <a href="docs/apresentacao-projeto-desafio-hubla.mp4" target="_blank">Clique aqui para assistir</a> |
+
+---
+
+## **Requisitos**
+
+Antes de iniciar, certifique-se de que você tem os seguintes softwares instalados:
+
+| Logo | Nome | Link |
+| --- | --- | --- |
+| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56"> | Docker | [Instalar Docker](https://www.docker.com/) |
+| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker Compose" width="56"> | Docker Compose | [Instalar Docker Compose](https://docs.docker.com/compose/) |
+| <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" width="56"> | Node.js | [Instalar Node.js](https://nodejs.org/) (versão 18 ou superior) |
+| <img src="https://user-images.githubusercontent.com/25181517/183049794-a3dfaddd-22ee-4ffe-b0b4-549ccd4879f9.png" alt="Yarn" width="56"> | Yarn | [Instalar Yarn](https://yarnpkg.com/) |
+| <img src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" alt="Yarn" width="56"> | Turborepo | [Instalar Turborepo](https://turbo.build/) |
 
 ---
 
@@ -94,20 +111,6 @@ Além disso, a API possui suporte ao **Swagger**, permitindo que você visualize
 | <img src="https://user-images.githubusercontent.com/25181517/187955005-f4ca6f1a-e727-497b-b81b-93fb9726268e.png" alt="Jest" width="56"> | Jest | Bilbioteca para testes |
 | <img src="https://authjs.dev/img/etc/logo-sm.webp" alt="Docker" width="56"> | Auth.js | Authentication for the Web |
 | <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56"> | Docker | Contêineres para desenvolvimento e deploy |
-
----
-
-## **Requisitos**
-
-Antes de iniciar, certifique-se de que você tem os seguintes softwares instalados:
-
-| Logo | Nome | Link |
-| --- | --- | --- |
-| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" width="56"> | Docker | [Instalar Docker](https://www.docker.com/) |
-| <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker Compose" width="56"> | Docker Compose | [Instalar Docker Compose](https://docs.docker.com/compose/) |
-| <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" width="56"> | Node.js | [Instalar Node.js](https://nodejs.org/) (versão 18 ou superior) |
-| <img src="https://user-images.githubusercontent.com/25181517/183049794-a3dfaddd-22ee-4ffe-b0b4-549ccd4879f9.png" alt="Yarn" width="56"> | Yarn | [Instalar Yarn](https://yarnpkg.com/) |
-| <img src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" alt="Yarn" width="56"> | Turborepo | [Instalar Turborepo](https://turbo.build/) |
 
 ---
 

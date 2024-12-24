@@ -628,8 +628,8 @@ Essa estrutura é bem organizada e segue boas práticas para projetos modernos c
 #### **Frontend**
 
 - [ ] Implementar testes unitários de componentes utilizando Jest e Testing Library.
-- [ ] Criar tela de listagem de usuários.
-- [ ] Criar tela de listagem de permissões por roles.
+- [ ] Criar tela de CRUD de usuários.
+- [ ] Criar tela de CRUD de permissões por roles.
 
 #### **Monorepo**
 

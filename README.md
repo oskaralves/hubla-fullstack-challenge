@@ -47,7 +47,7 @@ Este documento detalha as instruções para configurar e executar o ambiente tan
 
 | Vídeo | Link de arquivo .MP4 |
 | --- | --- |
-| **Apresentação do projeto** | <a href="docs/apresentacao-projeto-desafio-hubla.mp4" target="_blank">Clique aqui para assistir</a> |
+| **Apresentação do projeto** | <a href="https://github.com/oskaralves/hubla-fullstack-challenge/raw/refs/heads/desafio/docs/apresentacao-projeto-desafio-hubla.mp4" target="_blank">Clique aqui para assistir</a> |
 
 ---
 

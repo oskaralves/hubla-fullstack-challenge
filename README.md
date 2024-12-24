@@ -356,7 +356,7 @@ npx prisma migrate reset
 
 ## **Testes**
 
-O backend do projeto foi desenvolvido com suporte a testes unitários e de integração (E2E) utilizando o **Jest** e o **Supertest**. Abaixo estão os detalhes sobre a configuração e execução dos testes:
+O backend do projeto foi desenvolvido com suporte a testes unitários e de integração (E2E) utilizando o **Jest**. Abaixo estão os detalhes sobre a configuração e execução dos testes:
 
 ---
 

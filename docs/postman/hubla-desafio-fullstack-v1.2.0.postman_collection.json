@@ -343,34 +343,18 @@
 			"name": "transactions",
 			"item": [
 				{
-					"name": "create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/transactions",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"transactions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "bulk",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -415,6 +399,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -467,6 +461,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -505,6 +509,16 @@
 				{
 					"name": "getById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -534,7 +548,7 @@
 								"exec": [
 									"var jsonData = JSON.parse(pm.response.text());",
 									"if(jsonData?.rows?.[0]?.id){",
-									"  pm.environment.set(\"transactionId\", jsonData?.rows?.[0]?.id || null);",
+									"  pm.environment.set(\"transactionTypeId\", jsonData?.rows?.[0]?.id || null);",
 									"}",
 									""
 								],
@@ -658,10 +672,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"var jsonData = JSON.parse(pm.response.text());",
-									"if(jsonData?.addresses?.[0]){",
-									"  pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
-									"}"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -707,10 +718,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"var jsonData = JSON.parse(pm.response.text());",
-									"if(jsonData?.addresses?.[0]){",
-									"  pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
-									"}"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -775,11 +783,6 @@
 									"var jsonData = JSON.parse(pm.response.text());",
 									"if (jsonData?.id) {",
 									"    pm.environment.set(\"userId\", jsonData?.id || null);",
-									"}",
-									"if (jsonData?.addresses?.[0]) {",
-									"    pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
-									"    pm.environment.set(\"latitude\", jsonData?.addresses?.[0]?.latitude || null);",
-									"    pm.environment.set(\"longitude\", jsonData?.addresses?.[0]?.longitude || null);",
 									"}"
 								],
 								"type": "text/javascript",
@@ -821,7 +824,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{randomName}}\",\n    // \"email\": \"osk.alves@gmail.com\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"Abcd123!\",\n    \"nickname\": \"{{randomNickname}}\",\n    \"username\": \"{{randomUsername}}\",\n    //\"image\": \"{{avatarBase64}}\",\n    \"documents\": [\n        {\n            \"type\": \"CPF\",\n            \"value\": \"123.704.487-99\"\n        },\n        {\n            \"type\": \"RG\",\n            \"value\": 216006502\n        }\n    ],\n    \"address\": null,\n    \"roles\": [\n        \"CUSTOMER\"\n        // \"MERCHANT\"\n        // \"ADMIN\"\n    ]\n}",
+							"raw": "{\n    \"name\": \"{{randomName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"Abcd123!\",\n    \"nickname\": \"{{randomNickname}}\",\n    \"username\": \"{{randomUsername}}\",\n    //\"image\": \"{{avatarBase64}}\",\n    \"roles\": [\n        \"CUSTOMER\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -850,11 +853,6 @@
 									"var jsonData = JSON.parse(pm.response.text());",
 									"if (jsonData?.id) {",
 									"    pm.environment.set(\"userId\", jsonData?.id || null);",
-									"}",
-									"if (jsonData?.addresses?.[0]) {",
-									"    pm.environment.set(\"addressId\", jsonData?.addresses?.[0]?.id || null);",
-									"    pm.environment.set(\"latitude\", jsonData?.addresses?.[0]?.latitude || null);",
-									"    pm.environment.set(\"longitude\", jsonData?.addresses?.[0]?.longitude || null);",
 									"}"
 								],
 								"type": "text/javascript",
@@ -883,7 +881,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Oscar Alves Updated\",\n    // \"username\": \"oscar-consumidor\"\n    // \"roles\": [\n    //    \"ADMIN\"\n    // ],\n     \"address\": {\n         \"id\": \"{{addressId}}\",\n        \"description\": null,\n         \"line1\": \"Rua bacabal, bangu\",\n    //     // \"number\": \"373\",\n         \"line2\": \"Loja B\"\n    //     // \"zipcode\": \"12345-678\",\n    //     //\"neighborhood\": \"Mueller Neck\",Î\n    //     // \"city\": \"Rio de Janeiro\",\n    //     // \"state\": \"Rio de Janeiro\",\n    //     // \"country\": \"Brasil\",\n    //     \"countryCode\": \"BRL\",\n    //     \"reference\": \"Em frente ao cachorro quente do Mineiro\",\n    //     // \"latitude\": -22.970722,\n    //     // \"longitude\": -43.182365,\n    //     // \"isDefault\": true,\n    //     \"type\": \"WORK\"\n    }\n}",
+							"raw": "{\n    \"name\": \"Oscar Alves Updated\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -958,12 +956,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"if(jsonData?.rows?.[0]){",
-									"  pm.environment.set(\"roleId\", jsonData?.rows?.[0]?.id || null);",
-									"}"
+									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1163,26 +1159,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/permissions?skip=0&take=10&roleId={{roleId}}",
+							"raw": "{{host}}/permissions",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"permissions"
-							],
-							"query": [
-								{
-									"key": "skip",
-									"value": "0"
-								},
-								{
-									"key": "take",
-									"value": "10"
-								},
-								{
-									"key": "roleId",
-									"value": "{{roleId}}"
-								}
 							]
 						}
 					},

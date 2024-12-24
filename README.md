@@ -40,6 +40,8 @@ Este repositório é um monorepo que contém dois projetos principais, projetado
 | --- | --- |
 | <img src="docs/hubla-backend-swagger.png" alt="Hubla Backend" /> | <img src="docs/hubla-frontend.png" alt="Hubla Frontend" /> |
 
+<video controls src="docs/apresentacao-projeto-desafio-hubla.mp4" title="Apresentação do projeto rodando no ambiente local de desenvolvimento"></video>
+
 Este documento detalha as instruções para configurar e executar o ambiente tanto em modo de desenvolvimento quanto em modo de produção, além de fornecer descrições sobre comandos essenciais do Prisma e o acesso à documentação Swagger para facilitar a integração e uso da API.
 
 ---

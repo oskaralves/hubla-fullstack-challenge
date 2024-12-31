@@ -71,7 +71,7 @@ Para realizar testes na API, disponibilizamos duas formas principais de interaç
 
 ### 1. Arquivos Postman
 
-Fornecemos arquivos de configuração para facilitar o uso do Postman, permitindo que você importe as rotas diretamente em sua workspace.
+Arquivos de configuração para facilitar o uso do Postman, permitindo que você importe as rotas diretamente em sua workspace.
 
 | Arquivo | Link de Download |
 | --- | --- |
@@ -118,7 +118,12 @@ Além disso, a API possui suporte ao **Swagger**, permitindo que você visualize
 
 ### 1. Subir o ambiente com Docker Compose
 
-![containers](docs/containers.png) Na raiz do monorepo, execute:
+![containers](docs/containers.png) 
+
+> :bulb: É necessário criar os arquivos .env seguindo o arquivo .env.example de cada projeto.
+> Se precisar que eu envie, solicite por email osk.alves@gmail.com ou pelo https://www.linkedin.com/in/oskaralves
+
+Na raiz do monorepo, execute:
 
 ```bash
 # Subir apenas os serviços necessários para desenvolvimento
@@ -139,7 +144,7 @@ yarn prisma:generate
 
 Este comando executa o script configurado no `package.json` do `hubla-backend` para preparar o banco de dados e gerar o cliente do Prisma. O script realiza as seguintes etapas:
 
-1. Aplicar Migrações ao Banco de Dados `npx prisma migrate deploy` Sincroniza as migrações com o banco de dados, criando ou atualizando as tabelas conforme necessário.
+1. Aplicar Migrações ao Banco de Dados `npx prisma migrate dev` Sincroniza as migrações com o banco de dados, criando ou atualizando as tabelas conforme necessário.
 2. Seed do Banco de Dados `yarn prisma:seed` Popula o banco de dados com dados iniciais, úteis para desenvolvimento ou testes.
 3. Gerar o Prisma Client `npx prisma generate` Cria os arquivos necessários para que o Prisma interaja com o banco de dados usando TypeScript.
 

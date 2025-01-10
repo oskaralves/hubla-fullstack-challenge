@@ -65,25 +65,6 @@ Antes de iniciar, certifique-se de que você tem os seguintes softwares instalad
 
 ---
 
-## Autenticação
-
-Para realizar testes na API, disponibilizamos duas formas principais de interação:
-
-### 1. Arquivos Postman
-
-Arquivos de configuração para facilitar o uso do Postman, permitindo que você importe as rotas diretamente em sua workspace.
-
-| Arquivo | Link de Download |
-| --- | --- |
-| **Collection - Hubla Full Stack - v1.2.0** | [Baixar Collection](docs/postman/hubla-dev.postman_environment.json) |
-| **Environment - HublaDev** | [Baixar Environment](docs/postman/hubla-dev.postman_environment.json) |
-
-### 2. Swagger
-
-Além disso, a API possui suporte ao **Swagger**, permitindo que você visualize e interaja diretamente com as rotas através de uma interface web amigável.
-
----
-
 ## **Tecnologias Utilizadas**
 
 ### Backend
